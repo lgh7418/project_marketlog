@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.memberMapper">
+	<insert id="insertNewMember">
+		insert into p_member (email_id, email1, email2, member_pw, member_name)
+		values (#{email_id}, #{email1}, #{email2}, #{member_pw}, #{member_name})
+	</insert>
+	
+	<!-- 로그인 -->
+	<resultMap id="memberMap" type="MemberVO">
+		<result property="email_id" column="email_id" />
+		<result property="email1" column="email1" />
+		<result property="email2" column="email2" />	
+		<result property="member_pw" column="member_pw" />
+		<result property="member_name" column="member_name" />
+		<result property="joinDate" column="joinDate" />
+	</resultMap>
+	
+	<!-- 로그인 맵퍼 -->
+	<select id="login" resultMap="memberMap">
+		select * from p_member where email_id = #{email_id} and member_pw = #{member_pw}
+	</select>
+	
+	<!-- ID 중복 검사 -->
+	<select id="selectOverlappedID" parameterType="String" resultType="String">
+		select * from p_member where email_id = #{email_id}
+	</select>
+</mapper>

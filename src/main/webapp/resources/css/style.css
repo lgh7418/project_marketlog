@@ -1,0 +1,16 @@
+@import "config/reset.css";
+@import "config/bootstrap.min.css";
+@import "config/settings.css";
+
+@import "pages/seller.css";
+@import "pages/buyer_select.css";
+@import "pages/home.css";
+@import "pages/join.css";
+@import "pages/login.css";
+@import "pages/mypage.css";
+@import "pages/seller_form.css";
+@import "pages/seller_result.css";
+
+@import "partials/buy1.css";
+@import "partials/header.css";
+@import "partials/sell1.css";

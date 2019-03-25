@@ -1,0 +1,71 @@
+.page-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    /* height: 90vh;
+	margin: 10vh auto 0 auto; */
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    margin: 0 auto;
+}
+
+.sell iframe {
+    width: 100%;
+    height: calc(97vh - 70px);
+    max-width: 950px;
+    border: 2px solid #4F86C6;
+}
+
+.sell article {
+	/* margin-top: 10px; */
+	/* width: 35%; */
+    flex: 2;
+} 
+
+.sell aside {
+    width: 60%;
+    flex: 3;
+    padding-left: 7%;
+}
+
+.sell p {
+    color: #4F86C6;
+    font-size: 1.2rem;
+}
+
+.sell table {
+    background-color: #fff;
+}
+
+.sell table th {
+	font-weight: bold;
+    padding-left: 5%;
+}
+.sell table td:last-child{
+    width: 20%;
+}
+
+.sell .table td {
+    padding: 0;
+}
+
+.table td input {
+    border-radius: 0;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+
+.product {
+	margin-bottom: 50px;
+}
+
+.sell .input-group {
+	width: 150px;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: 0;
+    padding: .375rem .6rem;
+}

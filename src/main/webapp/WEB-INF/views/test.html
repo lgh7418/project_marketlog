@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>주문이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="..//resources/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+  <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    	<a class="navbar-brand" href="main2.jsp" >LOGO</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>	
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="mypage.jsp">마이페이지</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="buyer.jsp">구매하기</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="seller.jsp">판매하기</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="seller.jsp">QnA</a>
+				</li>
+			</ul>
+		</div>	
+  </header>
+  <div class="content-block">
+    <div class="mypage-nav container-fluid">
+      <div class="row">
+        <div class="nav-menu col-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="pill" aria-controls="v-pills-home" aria-selected="true">구매 현황</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="pill" aria-controls="v-pills-profile" aria-selected="false">내 정보 수정</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="pill" aria-controls="v-pills-messages" aria-selected="false">판매 현황</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="pill" aria-controls="v-pills-settings" aria-selected="false">판매 정보 수정</a>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <!-- buy1.jsp -->
+                <p class="font-navy"><b>주문 내역</b></p>
+                <p>2019년 3월 19일</p>
+                <table class="table table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th></th>
+                      <th>상품명</th>
+                      <th>수량</th>
+                      <th>요구 사항</th>
+                      <th>주문 상태</th>
+                    </tr>
+                  <tbody>
+                    <tr>
+                      <td class="sm"><input type="checkbox">
+                      <td>치유의 빵</td>
+                      <td>1개</td>
+                      <td>없음</td>
+                      <td>결제 완료</td>
+                    </tr>
+                    <tr>
+                      <td class="sm"><input type="checkbox">
+                      <td>Jacob</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="sm"><input type="checkbox">
+                      <td>Larry</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <!-- <%@include file="partials/buy_info.jsp" %> -->
+              <div class="">
+                  <form class="form-horizontal">
+                      <table class="">
+                          <tr>
+                            <th><label for="inputName">수령인</label></th>
+                            <td><input type="text" id="inputName" class="form-control" value="회원이름"></td>
+                          <tr>
+                            <th><label for="address">주소</label></th>
+                            <td><input type="text" class="form-control" id="address" placeholder="주소 검색"></td>
+                           </tr>
+                          <tr>
+                            <th>연락처</th>
+                             <td>
+                             <select>
+                               <option>010</option>
+                             </select>-
+                               <input type="text" class="" size="5">-
+                               <input type="text" class="" size="5">
+                             </td>
+                         </tr>
+                          <tr><td><button type="submit" class="btn btn-primary">수정</button></td></tr>
+                      </table>
+                  </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+              <%@include file="partials/sell1.jsp" %>
+            </div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+          </div>
+        </div>
+      </div>
+     </div>
+     </div>
+    </body>
+    </html>
+      

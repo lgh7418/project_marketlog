@@ -1,0 +1,20 @@
+
+
+/* @media (max-width:767.98px) {
+	.nav-menu {
+		display: none;
+	}
+} */
+
+.nav-menu {
+    padding-top: 70px;
+    height: 100vh;
+    border-right: 2px solid #4F86C6;
+	background-color: white;
+	max-width: 300px;
+}
+
+.tab-content {
+	padding-top: 78px;
+	margin-left: 7%;
+}

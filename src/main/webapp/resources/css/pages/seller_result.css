@@ -1,0 +1,15 @@
+.seller_result {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.seller_result p {
+    margin: 40vh auto 35px auto;
+    font-size: 1.2rem;
+}
+
+.seller_result  div{
+    margin: 0 auto;
+}

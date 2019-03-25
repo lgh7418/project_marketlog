@@ -1,0 +1,22 @@
+/* .mypage-nav .table {
+    width: 60%;
+} */
+
+.mypage-nav .table td {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.mypage-nav .table th {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: bold;
+}
+
+.mypage-nav .table th:nth-child(2) {
+    width: 50%;
+}
+
+.mypage-nav tr.th {
+	background-color: rgba(0,0,0,.05);
+}

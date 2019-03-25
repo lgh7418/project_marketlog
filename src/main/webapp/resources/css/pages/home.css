@@ -1,0 +1,67 @@
+body {
+    /* background-color: #d3f8e9; */
+    /* color: white;
+    background: url('../image/background.jpg') no-repeat center center fixed;
+    background-size: cover; 
+    width: 100%;
+    height: 100%;*/
+    margin: 0 auto;
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+}
+
+/* .logo {
+    margin: 30vh auto 0 auto;
+} */
+
+.login-box {
+    /* width: 50%;
+    height: 20%;
+    max-width: 500px;
+    max-height: 300px; */
+    margin: 40px auto;
+}
+
+.home .btn {
+    width: 150px;
+}
+
+.select-btn a:first-child {
+    margin-right: 20px;
+}
+
+.home {
+    height: 100vh;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.5)),         
+        url(../../images/notebook.jpg);
+    background-size: cover;
+    background-position: top;
+
+}
+
+.home .container {
+    padding-top: 35vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.select-btn {
+    margin: auto;
+    display: inline-flex;
+}
+
+.logo {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 45px;
+}
+
+.btn-outline-primary {
+	background-color: #fff;
+}
