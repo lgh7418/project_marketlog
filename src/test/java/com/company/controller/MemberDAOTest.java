@@ -20,8 +20,6 @@ public class MemberDAOTest {
 	public void testInsertNewMember() throws Exception {
 		MemberVO temp = new MemberVO();
 		temp.setEmail_id("spring2@gmail.com");
-		temp.setEmail1("spring1");
-		temp.setEmail2("gmail.com");
 		temp.setMember_name("홍길동2");
 		temp.setMember_pw("12345");
 		dao.insertNewMember(temp);

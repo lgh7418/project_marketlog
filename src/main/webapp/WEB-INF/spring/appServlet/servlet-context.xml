@@ -26,6 +26,7 @@
 	<!-- Login Interceptor -->
 	<beans:bean id="loginInterceptor" class="com.company.interceptor.LoginInterceptor"></beans:bean>
 <!-- 	<beans:bean id="authInterceptor" class="com.company.interceptor.AuthInterceptor"></beans:bean> -->
+	<beans:bean id="joinInterceptor" class="com.company.interceptor.JoinInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -36,6 +37,10 @@
 			<mapping path="/board/register"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor> -->
+		<interceptor>
+			<mapping path="/member/join.do"/>
+			<beans:ref bean="joinInterceptor" />
+		</interceptor>
 	</interceptors>
 	
 </beans:beans>

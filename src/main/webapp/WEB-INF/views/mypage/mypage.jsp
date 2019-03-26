@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="partials/header.jsp" %>
+<%@include file="../partials/header.jsp" %>
 <div class="content-block">
 	<div class="mypage-nav container-fluid">
 		<div class="row">
@@ -14,13 +14,13 @@
 			<div class="col-9">
 				<div class="tab-content" id="v-pills-tabContent">
 					<div class="tab-pane fade active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-						<%@include file="partials/buy1.jsp" %>
+						<%@include file="buy1.jsp" %>
 					</div>
 					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-						<%@include file="partials/buy_info.jsp" %>
+						<%@include file="buy_info.jsp" %>
 					</div>
 					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-						<%@include file="partials/sell1.jsp" %>
+						<%@include file="sell1.jsp" %>
 					</div>
 					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
 				</div>
