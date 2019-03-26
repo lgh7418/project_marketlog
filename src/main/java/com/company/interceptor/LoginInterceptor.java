@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
-	// private static final String LOGIN = "login";
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	@Override
@@ -31,7 +30,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = req.getSession();
 		ModelMap modelMap = mav.getModelMap();
 		String contextPath = req.getContextPath();
-		// 만약 모델맵에 userVO가 들어가 있다면 로그인이 성공했다는 뜻
+		// 만약 모델맵에 memberVO가 들어가 있다면 로그인이 성공했다는 뜻
 		Object memberVO = modelMap.get("memberVO");
 		if(memberVO != null) {
 			logger.info("로그인 성공");
