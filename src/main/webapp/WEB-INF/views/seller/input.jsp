@@ -9,7 +9,7 @@
       <p>예) https://blog.naver.com/s486s012&nbsp;&nbsp;</p>
       <form action="${contextPath}/seller/seller_form" method="post">
       	<div class="input-group">
-        	<input type="text" class="form-control" placeholder="주소 입력" aria-label="Recipient's username" aria-describedby="button-addon">
+        	<input type="text" name="product_address" class="form-control" placeholder="주소 입력" aria-label="Recipient's username" aria-describedby="button-addon">
 	        <div class="input-group-append">
 	          <button type="submit" class="btn btn-primary b-next" id="button-addon"><i class="fas fa-arrow-right"></i></button>
 	        </div>
