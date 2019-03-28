@@ -41,4 +41,6 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO login(LoginDTO loginDTO) throws Exception {
 		return sqlSession.selectOne(namespace + ".login", loginDTO);
 	}
+
+
 }

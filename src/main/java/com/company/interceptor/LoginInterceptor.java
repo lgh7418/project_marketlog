@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.company.domain.MemberVO;
+
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
@@ -31,10 +33,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = mav.getModelMap();
 		String contextPath = req.getContextPath();
 		// 만약 모델맵에 memberVO가 들어가 있다면 로그인이 성공했다는 뜻
-		Object memberVO = modelMap.get("memberVO");
+		MemberVO memberVO = (MemberVO) modelMap.get("memberVO");
 		if(memberVO != null) {
 			logger.info("로그인 성공");
-			session.setAttribute("login", memberVO);	// 멤버 객체를 세션에 넣어줌
+			session.setAttribute("member_no", memberVO.getMember_no());	// 멤버 객체를 세션에 넣어줌
 			res.sendRedirect(contextPath + "/main/home"); // 루트 폴더로 돌려보냄.
 		}else {
 			// 로그인 실패 시 다시 로그인 창으로 리다이렉트

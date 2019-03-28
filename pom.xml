@@ -146,6 +146,9 @@
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
+		
+		<!-- logback -->
+
 	</dependencies>
     <build>
         <plugins>

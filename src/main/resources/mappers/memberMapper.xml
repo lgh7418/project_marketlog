@@ -10,6 +10,7 @@
 	
 	<!-- 로그인 -->
 	<resultMap id="memberMap" type="MemberVO">
+		<result property="member_no" column="member_no"	/>
 		<result property="email_id" column="email_id" />
 		<result property="member_pw" column="member_pw" />
 		<result property="member_name" column="member_name" />

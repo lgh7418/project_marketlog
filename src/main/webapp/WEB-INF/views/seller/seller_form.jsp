@@ -5,20 +5,10 @@
 <script>
 $(document).ready(function() {
 	$("#add-row").click(function() {
-		$("#product_table > tbody:first").append('<tr><td><input type="text" class="form-control"></td>'
-		+ '<td><input type="text" class="form-control"></td></tr>');
+		$("#product_table > tbody:first").append('<tr><td><input type="text" class="form-control gname" name="goods_name"></td>'
+		+ '<td><input type="text" class="form-control gprice" name="goods_price"></td></tr>');
 	});
-	// 자바스크립트 goods_name
-	
-	// focus 새로 만든 row의 first td에
 });
-
-function renameForModelAttribute() {
-    $("form").each( function (index) {
-        $("input[name=goods_name]").attr("name", "goods["+index+"].goods_name");
-        $("input[name=goods_price]").attr("name", "goods["+index+"].goods_price");
-    };
-}
 </script>
 
 <div class="content-block">
@@ -28,8 +18,8 @@ function renameForModelAttribute() {
           <iframe src="${address }" frameborder="0"></iframe>
         </article>
         <aside>
+          <form id="goods_form" action="${contextPath }/seller/seller_result" method="post">
           <div class="product">
-          <form action="${contextPath }/seller/seller_result" method="post">
           <p>상품명과 가격을 입력하세요</p>
           <table class="table table-bordered" id="product_table">
               <thead>
@@ -40,8 +30,8 @@ function renameForModelAttribute() {
             </thead>
             <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" name="goods_name"></td>
-                  <td><input type="text" class="form-control" name="goods_price"></td>
+                  <td><input type="text" class="form-control gname" name="goods_name"></td>
+                  <td><input type="text" class="form-control gprice" name="goods_price"></td>
                 </tr>
              </tbody>
           </table>
@@ -50,16 +40,45 @@ function renameForModelAttribute() {
           <div class="charge">
           <p>배송비를 입력하세요</p>
           <div class="input-group mb-3">
-            <input type="text" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" name="shipping" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">원</span>
             </div>
           </div>
-          <button type="button" class="btn btn-primary" onclick="renameForModelAttribute">다음</button>
+          <input type="hidden" name="goods_address" value="${address }">
+          <button type="button" class="btn btn-primary" onclick="checkName()">다음</button>
           </div>
           </form>
         </aside>
       </div>
     </div>
   </body>
+  <script>
+  function checkName() {
+	    var gname = document.getElementsByClassName("gname");
+	    var gprice = document.getElementsByClassName("gprice");
+	    if(gname[0].value=="") {
+	    	alert('상품명을 입력하세요.');
+	    	return;
+	    }
+	    if(gname.length>=1) {
+		    for(var i=0; i<gname.length-1; i++) {
+		        for(var j=i+1; j<gname.length; j++) {
+		            if(name[i].value==gname[j].value) {
+		            	alert('상품명은 모두 달라야 합니다.');
+		            	return;
+		            }
+		        }
+		    }
+	    }
+	    rename(gname);
+	    rename(gprice);
+        document.getElementById("goods_form").submit();
+	}
+  function rename(elements) {
+	  for (var i=0; i<elements.length; i++) {
+		    elements[i].name = "list["+ i+"]."+elements[i].name;
+		}
+  }
+  </script>
 </html>

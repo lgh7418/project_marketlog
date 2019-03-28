@@ -26,13 +26,13 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav ml-auto">
 				<c:choose>
-					<c:when test="${empty login}">
+					<c:when test="${empty member_no}">
 						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/login">로그인</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/logout">로그아웃</a></li>
-						<li class="nav-item active"><a class="nav-link" href="${contextPath}/mypage/mypage">마이페이지</a></li>
+						<li class="nav-item"><a class="nav-link" href="${contextPath}/mypage/mypage">마이페이지</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/buyer/input">구매하기</a>

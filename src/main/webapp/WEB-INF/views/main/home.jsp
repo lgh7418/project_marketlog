@@ -7,7 +7,7 @@
         <div class="container">
             <h1 class="logo">편리한 주문, MarketLog</h1>
 		<c:choose>
-			<c:when test="${empty login}">
+			<c:when test="${empty member_no}">
 		        <div class="select-btn">
 		            <a href="${contextPath}/member/join" class="btn btn-primary btn-lg" role="button">회원가입</a>
 		            <a href="${contextPath}/member/login" class="btn btn-primary btn-lg" role="button">로그인</a>
