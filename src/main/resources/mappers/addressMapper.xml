@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.addressMapper">
+	<insert id="insertAddress">
+		insert into p_address (member_no, goods_address, shipping)
+		values (#{member_no}, #{goods_address}, #{shipping})
+	</insert>
+	
+	<select id="getAddressNo" parameterType="String" resultType="int">
+		select address_no from p_address where goods_address = #{goods_address}
+	</select>
+</mapper>

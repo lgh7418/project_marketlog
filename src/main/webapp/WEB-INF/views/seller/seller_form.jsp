@@ -13,7 +13,6 @@ $(document).ready(function() {
 
 <div class="content-block">
   <div class="page-wrapper sell">
-        <!-- 셀러 페이지에서는 iframe 사이즈를 더 줄이자 -->
         <article>
           <iframe src="${address }" frameborder="0"></iframe>
         </article>
@@ -40,12 +39,13 @@ $(document).ready(function() {
           <div class="charge">
           <p>배송비를 입력하세요</p>
           <div class="input-group mb-3">
-            <input type="text" name="shipping" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" name="shipping" id="shipping" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">원</span>
             </div>
           </div>
           <input type="hidden" name="goods_address" value="${address }">
+          <input type="hidden" name="member_no" value="${member_no }">
           <button type="button" class="btn btn-primary" onclick="checkName()">다음</button>
           </div>
           </form>
@@ -64,12 +64,15 @@ $(document).ready(function() {
 	    if(gname.length>=1) {
 		    for(var i=0; i<gname.length-1; i++) {
 		        for(var j=i+1; j<gname.length; j++) {
-		            if(name[i].value==gname[j].value) {
+		            if(gname[i].value==gname[j].value) {
 		            	alert('상품명은 모두 달라야 합니다.');
 		            	return;
 		            }
 		        }
 		    }
+	    }
+	    if(checkShipping()) {
+	    	return;
 	    }
 	    rename(gname);
 	    rename(gprice);
@@ -79,6 +82,14 @@ $(document).ready(function() {
 	  for (var i=0; i<elements.length; i++) {
 		    elements[i].name = "list["+ i+"]."+elements[i].name;
 		}
+  }
+  function checkShipping() {
+	  var shipping = document.getElementById("shipping");
+	  if(shipping.value=="") {
+		  alert('배송비를 입력하세요.');
+		  return true;
+	  }
+	  return false;
   }
   </script>
 </html>

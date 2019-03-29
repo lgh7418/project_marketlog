@@ -2,10 +2,12 @@ package com.company.domain;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 public class GoodsVO {
 	private String goods_name;
 	private String goods_price;
-	private String goods_address;
+	private int address_no;
 
 	public String getGoods_name() {
 		return goods_name;
@@ -19,17 +21,11 @@ public class GoodsVO {
 	public void setGoods_price(String goods_price) {
 		this.goods_price = goods_price;
 	}
-	public String getGoods_address() {
-		return goods_address;
+	public int getAddress_no() {
+		return address_no;
 	}
-	public void setGoods_address(String goods_address) {
-		this.goods_address = goods_address;
+	public void setAddress_no(int address_no) {
+		this.address_no = address_no;
 	}
-/*	public List<GoodsVO> getList() {
-		return list;
-	}
-	public void setList(List<GoodsVO> list) {
-		this.list = list;
-	}*/
 
 }

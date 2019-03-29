@@ -1,7 +1,8 @@
 package com.company.service;
 
-import com.company.domain.GoodsVO;
+import com.company.domain.AddressVO;
+import com.company.dto.GoodsDTO;
 
 public interface GoodsService {
-	public void addGoods(GoodsVO goodsVO) throws Exception;
+	public void addGoods(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception;
 }

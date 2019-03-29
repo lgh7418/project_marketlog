@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.company.domain.AddressVO;
 import com.company.domain.GoodsVO;
 import com.company.dto.GoodsDTO;
+import com.company.persistence.AddressDAO;
 import com.company.service.GoodsService;
 
 @Controller
@@ -22,6 +23,9 @@ import com.company.service.GoodsService;
 public class SellerController {	
 	@Inject
 	private GoodsService goodsService;
+	
+	@Inject
+	private AddressDAO addressDAO;
 	
 	private static final Logger logger = LoggerFactory.getLogger(SellerController.class);
 	
@@ -52,7 +56,11 @@ public class SellerController {
 		//GoodsVO goodsVO = new GoodsVO();
 		//goodsVO.set
 		
+		//addressDAO.insertAddress(addressVO);
+		
 		// 상품 추가
+		System.out.println(goodsDTO);
+		goodsService.addGoods(goodsDTO, addressVO);
 		
 	}
 	

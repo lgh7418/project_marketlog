@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.company.domain.GoodsVO;
+import com.company.dto.GoodsDTO;
 
 @Repository
 public class GoodsDAOImpl implements GoodsDAO {
