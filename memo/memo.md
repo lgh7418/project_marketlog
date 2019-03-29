@@ -81,7 +81,7 @@ if (
 
 if 주소가 일치하는 페이지가 있다면
 
-* 주소번호랑 일치하는 상품 목록 받아옴 (service)
+* 주소번호랑 일치하는 상품 목록 받아옴 (service) <완료!>
 * 상품 목록을 option 태그에 뿌려줌
 
 ### buyer_select
@@ -99,3 +99,44 @@ if 주소가 일치하는 페이지가 있다면
 * 표의 값을 받아서 db에 넘김
 * 주문번호, 주소 번호, 상품 이름, 상품 수량, 전달사항
 * 주문번호, 총가격, 배송비
+
+
+
+
+
+판매하기 
+
+#### service
+
+```java
+// 상품 목록 조회
+List<GoodsVO> goodsList = goodsDAO.selectGoods(GoodsVO);
+// 상품이 없는 경우 null을 반환
+/*if(goodsList.size()==0) {
+    return null;
+}*/
+// 상품정보를 반환
+return goodsList;
+```
+
+#### view
+
+```jsp
+<c:forEach var="goods" items="${goodsList}">
+    ${goods[0]} // goods_name
+    ${goods[1]} // goods_price
+```
+
+버튼 클릭하면 
+
+밑에 뜨게 함
+
+
+
+이벤트: 테이블을 만들어놓고 display:hidden을 보이게 설정
+
+
+
+- [ ] 상품명 중복 선택 하면 안됨
+- [ ] 선택 하고 dropdown 자동으로 close / hide
+

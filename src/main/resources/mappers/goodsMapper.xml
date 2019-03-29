@@ -7,5 +7,13 @@
 		insert into p_goods (address_no, goods_name, goods_price)
 		values (#{address_no}, #{goods_name}, #{goods_price})
 	</insert>
-
+	
+	<resultMap type="goodsVO" id="goodsMap">
+		<result property="goods_name" column="goods_name" />
+		<result property="goods_price" column="goods_price" />
+	</resultMap>
+	
+	<select id="selectGoods" resultMap="goodsMap">
+		select goods_name, goods_price from p_goods where address_no = #{address_no}
+	</select>
 </mapper>

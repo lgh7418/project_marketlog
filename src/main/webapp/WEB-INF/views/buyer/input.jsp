@@ -7,12 +7,14 @@
     <div class="seller">
       <p>구매하실 물건이 있는 페이지의 주소를 입력하세요.</p>
       <p>예) https://blog.naver.com/s486s012&nbsp;&nbsp;</p>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="주소 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <a href="${contextPath}/buyer/buyer_select" class="btn btn-primary b-next" role="button" id="button-addon2"><i class="fas fa-arrow-right"></i></a>
-        </div>
+      <form action="${contextPath}/buyer/buyer_select" method="post">
+	      <div class="input-group">
+	        <input type="text" name="goods_address" class="form-control" placeholder="주소 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
+	        <div class="input-group-append">
+	      	 <button type="submit" class="btn btn-primary b-next" id="button-addon"><i class="fas fa-arrow-right"></i></button>
+	        </div>
 	    </div>
+      </form>
     </div>
   </div>
 </body>

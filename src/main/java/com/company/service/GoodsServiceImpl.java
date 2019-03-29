@@ -23,7 +23,7 @@ public class GoodsServiceImpl implements GoodsService {
 	
 	@Override
 	public void addGoods(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
-		int address_no = addressDAO.getAddressNo(addressVO.getGoods_address());
+		Integer address_no = addressDAO.getAddressNo(addressVO.getGoods_address());
 		List<GoodsDTO> goodsList = goodsDTO.getList();
 		for (GoodsDTO goods : goodsList) {
 			String name = goods.getGoods_name();
@@ -36,6 +36,11 @@ public class GoodsServiceImpl implements GoodsService {
 			goodsVO.setAddress_no(address_no);
 			goodsDAO.insertGoods(goodsVO);			
 		}
+	}
+
+	@Override
+	public List<GoodsVO> goodsList(Integer address_no) throws Exception {
+		return goodsDAO.selectGoods(address_no);
 	}
 
 }

@@ -27,5 +27,11 @@ public class GoodsVO {
 	public void setAddress_no(int address_no) {
 		this.address_no = address_no;
 	}
+	@Override
+	public String toString() {
+		return "GoodsVO [goods_name=" + goods_name + ", goods_price=" + goods_price + ", address_no=" + address_no
+				+ "]";
+	}
+	
 
 }

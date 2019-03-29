@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.company.common.CommonUtils;
 import com.company.domain.AddressVO;
 import com.company.domain.GoodsVO;
 import com.company.dto.GoodsDTO;
@@ -35,28 +36,15 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value="/seller_form", method=RequestMethod.POST)
-	public void getAddress(@RequestParam("product_address") String address,
-			Model model) throws Exception {
-		if (address.indexOf("https://") != -1) {
-			address = address.substring(8);
-			address = "https://m." + address;
-		}
-		if (address.indexOf("http://") != -1) {
-			address = address.substring(9);
-			address = "https://m." + address;
-		}
-		model.addAttribute("address", address);
+	public void getAddress(String goods_address, Model model) throws Exception {
+		goods_address = CommonUtils.changeAddress(goods_address);
+		model.addAttribute("address", goods_address);
 	}
 	
 	@RequestMapping(value="/seller_result", method=RequestMethod.POST)
 	public void getProductInputs(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
-		//HttpSession session = request.getSession();
-		// 주소 추가
-		//String member_no = (String) session.getAttribute("member_no");
-		//GoodsVO goodsVO = new GoodsVO();
-		//goodsVO.set
-		
-		//addressDAO.insertAddress(addressVO);
+		// 주소 추가	
+		addressDAO.insertAddress(addressVO);
 		
 		// 상품 추가
 		System.out.println(goodsDTO);

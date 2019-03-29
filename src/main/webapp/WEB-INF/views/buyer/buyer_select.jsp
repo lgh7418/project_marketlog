@@ -4,7 +4,7 @@
 <div class="content-block">
 	<div class="page-wrapper buy">
 		<article>
-				<iframe src="https://m.blog.naver.com/s486s012/221464384000" frameborder="0"></iframe>
+			<iframe src="${address }" frameborder="0"></iframe>
 		</article>
 		<aside>
 			<div class="buy-input">
@@ -17,14 +17,18 @@
 					</a>
 					
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="#">Action</a>
+						<c:forEach var="goods" items="${goodsList }">
+							<input type="button" class="dropdown-item" onclick="selectOption()" value="${goods.goods_name }">
+						</c:forEach>
 						<a class="dropdown-item" href="#">Another action</a>
 						<a class="dropdown-item" href="#">Something else here</a>
 					</div>
 				</div>
 				<!-- 전하실 말씀은 텍스트 버튼으로 만들어서 버튼 클릭하면 추가할 수 있도록 -->
 				<!-- <input type="hidden" class="form-control form-control-sm" placeholder="요청 사항"> -->
-				<div class="buy-block">
+				<table id="table">
+				</table>
+				<div class="buy-block" style="display: none">
 					<div class="amount-box">
 						<input type="text" id="amount" value="1">
 						<div class="amount-btn-box">
@@ -44,8 +48,8 @@
 		</aside>
 	</div>
 </div>
-	<!-- toggle 메뉴로 장바구니 담긴 물품 보기 -->
 	<script>
+		// 수량 버튼 이벤트
 		function up() {
 			var amount_input = document.getElementById("amount");
 			var amount = parseInt(amount_input.value);
@@ -58,6 +62,25 @@
 				amount_input.value = amount - 1;
 			}
 		}
+		// 옵션 버튼 이벤트
+		function selectOption() {
+			var name = event.target.value;
+			var table = document.getElementById("table");
+			var amount = document.querySelector(".amount-box");
+			var check = document.querySelector(".form-check");
+			var row = table.insertRow(0);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			cell1.innerHTML = "<input type='text' value='"+name+"' disabled>";
+			row = table.insertRow(1);
+			cell1 = row.insertCell(0);
+			cell2 = row.insertCell(1);
+			cell1.innerHTML = amount.innerHTML;
+			cell2.innerHTML = check.innerHTML;
+		}
+		$('.dropdown-menu').click(function(e) {
+		    e.stopPropagation();
+		});
 	</script>
 </body>
 </html>

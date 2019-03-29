@@ -8,7 +8,7 @@
 		values (#{member_no}, #{goods_address}, #{shipping})
 	</insert>
 	
-	<select id="getAddressNo" parameterType="String" resultType="int">
+	<select id="getAddressNo" parameterType="String" resultType="Integer">
 		select address_no from p_address where goods_address = #{goods_address}
 	</select>
 </mapper>
