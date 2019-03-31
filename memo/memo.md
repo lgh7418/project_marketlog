@@ -140,3 +140,9 @@ return goodsList;
 - [ ] 상품명 중복 선택 하면 안됨
 - [ ] 선택 하고 dropdown 자동으로 close / hide
 
+
+- [ ]  form 태그 넣어서 선택한 상품 이름, 가격 넘기기
+- [ ]  db에 넣어야 할 것: 주문 번호, 구매한 사람 member_no, 페이지 address_no, 상품 이름, 상품 가격
+- [ ]  배송 정보 테이블: 주문 번호, 배송 정보
+
+
