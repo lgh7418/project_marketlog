@@ -116,10 +116,25 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency> 
+		<!-- mockito프레임워크 사용을 위한 라이브러리 -->
+<!-- 		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.9.5</version>
+		    <scope>test</scope>
+		</dependency>
+		spring test는 MockMvc와 다른 테스트를 포함한다.
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <scope>test</scope>
+		</dependency> -->
+		<!-- mysql 버전 변경 6.0.5에서 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.5</version>
+			<version>8.0.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>

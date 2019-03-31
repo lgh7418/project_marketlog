@@ -21,13 +21,15 @@ public class CommonUtils {
 	
 	// pc버전 주소를 모바일 버전으로 변경
 	public static String changeAddress(String address) {
-		if (address.indexOf("https://") != -1) {
-			address = address.substring(8);
-			address = "https://m." + address;
-		}
-		if (address.indexOf("http://") != -1) {
-			address = address.substring(9);
-			address = "https://m." + address;
+		if (address.indexOf("://m.") == -1) {
+			if (address.indexOf("https://") != -1) {
+				address = address.substring(8);
+				address = "https://m." + address;
+			}
+			if (address.indexOf("http://") != -1) {
+				address = address.substring(9);
+				address = "https://m." + address;
+			}
 		}
 		return address;
 	}

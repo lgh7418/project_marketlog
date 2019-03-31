@@ -30,11 +30,12 @@ public class BuyerController {
 	
 	@RequestMapping(value="/buyer_select", method=RequestMethod.POST)
 	public void getAddress(String goods_address, Model model) throws Exception {
-		goods_address = CommonUtils.changeAddress(goods_address);
+		//goods_address = CommonUtils.changeAddress(goods_address);
 		model.addAttribute("address", goods_address);
 		
 		Integer address_no = addressDAO.getAddressNo(goods_address);
-		
+		System.out.println(goods_address);
+		System.out.println(address_no);
 		if(address_no != null) {
 			List<GoodsVO> goodsList = goodsService.goodsList(address_no);
 			System.out.println(goodsList);

@@ -22,7 +22,9 @@
 					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 						<%@include file="sell1.jsp" %>
 					</div>
-					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+						판매 페이지 선택 -> 판매 수정 페이지(수정/취소) 
+					</div>
 				</div>
 			</div>
 		</div>
