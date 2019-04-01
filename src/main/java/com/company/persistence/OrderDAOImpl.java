@@ -1,5 +1,7 @@
 package com.company.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,5 +25,10 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public void insertOrderGoods(OrderGoodsVO orderGoodsVO) throws Exception {
 		sqlSession.insert(namespace+".insertOrderGoods", orderGoodsVO);
+	}
+
+	@Override
+	public List<OrderInfoVO> selectOrderInfo(int member_no) {
+		return sqlSession.selectList(namespace+".selectOrderInfo", member_no);
 	}
 }

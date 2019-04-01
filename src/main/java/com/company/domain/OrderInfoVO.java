@@ -1,5 +1,7 @@
 package com.company.domain;
 
+import java.sql.Date;
+
 public class OrderInfoVO {
 	private int order_no;
 	private int member_no;
@@ -12,6 +14,7 @@ public class OrderInfoVO {
 	private int phone2;
 	private int phone3;
 	private String memo;
+	private Date order_time;
 	
 	
 	public int getOrder_no() {
@@ -80,5 +83,11 @@ public class OrderInfoVO {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-
+	public Date getOrder_time() {
+		return order_time;
+	}
+	public void setOrder_time(Date order_time) {
+		this.order_time = order_time;
+	}
+	
 }

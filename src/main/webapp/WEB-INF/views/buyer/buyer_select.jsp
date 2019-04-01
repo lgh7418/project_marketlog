@@ -38,8 +38,8 @@
 					<div class="amount-box">
 						<input type="text" name="amount" class="amount" value="1">
 						<div class="amount-btn-box">
-							<button class="btn-up" onclick="up()"><i class="fas fa-angle-up"></i></button>
-							<button class="btn-down" onclick="down()"><i class="fas fa-angle-down"></i></button>
+							<button type="button" class="btn-up" onclick="up()"><i class="fas fa-angle-up"></i></button>
+							<button type="button" class="btn-down" onclick="down()"><i class="fas fa-angle-down"></i></button>
 						</div>
 					</div>
 					<div class="form-check">
@@ -74,8 +74,8 @@
 		var name = $(this).children('.name').text();
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
-		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'">'
-		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'"></td></tr>'
+		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
+		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly></td></tr>'
 		+ '<tr><td>'+block.innerHTML+'</td></tr>'
 		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr>');
 	});
