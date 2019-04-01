@@ -135,14 +135,31 @@ return goodsList;
 
 이벤트: 테이블을 만들어놓고 display:hidden을 보이게 설정
 
-
+#### buyer_select
 
 - [ ] 상품명 중복 선택 하면 안됨
+  * 상품명 선택하면 onclick 속성을 없애게 함
+  * 삭제를 선택하면 onclick 속성을 다시 생성
 - [ ] 선택 하고 dropdown 자동으로 close / hide
 
 
-- [ ]  form 태그 넣어서 선택한 상품 이름, 가격 넘기기
-- [ ]  db에 넣어야 할 것: 주문 번호, 구매한 사람 member_no, 페이지 address_no, 상품 이름, 상품 가격
-- [ ]  배송 정보 테이블: 주문 번호, 배송 정보
+- [x] form 태그 넣어서 선택한 상품 이름, 가격 넘기기
+- [x] db에 넣어야 할 것: 주문 번호, 구매한 사람 member_no, 페이지 address_no, 상품 이름, 상품 가격
+
+##### !문제
+
+- [x] vo에 있는 field가 input이 없어도 예외 발생 안하는가? -> 발생 안함 null
+- [x] isEmpty 적용 했는데도 null이 넘어감
+  * 지금은 됨... 이유 모름
+
+#### buyer_shipping
 
 
+- [x] 배송 정보 테이블: 주문 번호, 배송 정보
+- [ ] buyer_shipping에서 취소하면 derete row
+- [ ] 배송 정보 넣음 -> 주문 번호 가져옴 -> 주문 상품 번호 넣음
+
+##### !문제
+
+- [x] order_goods의 주문번호가 order_info의 주문번호랑 다름
+  * insert 안에 selectkey 이용했는데  insert의 파라미터타입이 map종류인 경우, map에 key값이 들어가서 getter로 가져와야 함

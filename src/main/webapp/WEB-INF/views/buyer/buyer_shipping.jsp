@@ -3,6 +3,7 @@
 
 <div class="content-block">
         <div class="shipping-form">
+        <form action="${contextPath }/buyer/buyer_result" method="post">
           <table>
             <tr>
               <th>받으시는분</th>
@@ -13,40 +14,20 @@
               <td>
                 <div class="form-inline">
                   <div class="form-group mb-2">
-                    <input
-                      type="text"
-                      id="postcode"
-                      name="postcode"
-                      class="form-control"
-                      placeholder="우편번호"
-                    />
+                    <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호"/>
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
-                    <input
-                      type="button"
-                      onclick="execDaumPostcode()"
-                      value="주소 찾기"
-                    />
+                    <input type="button" onclick="execDaumPostcode()" value="주소 찾기">
                   </div>
                 </div>
-                <input
-                  type="text"
-                  id="address"
-                  class="form-control"
-                  placeholder="주소"
-                />
-                <input
-                  type="text"
-                  id="detailAddress"
-                  class="form-control"
-                  placeholder="상세주소"
-                />
+                <input type="text" id="address" name="address" class="form-control" placeholder="주소">
+                <input type="text" id="detailAddress" name="detail_address" class="form-control" placeholder="상세주소">
               </td>
             </tr>
             <tr>
               <th>휴대전화</th>
               <td>
-                <select name="phoneNo1">
+                <select name="phone1">
                   <option value="010">010</option>
                   <option value="011">011</option>
                   <option value="016">016</option>
@@ -54,19 +35,21 @@
                   <option value="018">018</option>
                   <option value="019">019</option>
                 </select>
-                - <input type="text" name="phoneNo2" /> -
-                <input type="text" name="phoneNo3" />
+                - <input type="text" name="phone2" /> -
+                <input type="text" name="phone3" />
               </td>
             </tr>
             <tr>
               <th>배송시요구사항</th>
               <td>
-                <input type="text" name="orderRequest" class="form-control" />
+                <input type="text" name="memo" class="form-control" />
               </td>
             </tr>
           </table>
+          <input type="submit" class="btn btn-primary" value="주문하기">
+        </form>
         </div>
-      </div>
+     </div>
       <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
       <script>
         function execDaumPostcode() {

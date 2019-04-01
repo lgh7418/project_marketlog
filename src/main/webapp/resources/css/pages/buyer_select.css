@@ -28,7 +28,7 @@
 	position: relative;
 }
 
-.buy-input a.btn-primary {
+.buy-input button.btn-primary {
 	position: absolute;
 	bottom: 3%;
 	border-radius: 0;

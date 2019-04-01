@@ -2,16 +2,16 @@ package com.company.domain;
 
 //@Component("memberVO")
 public class MemberVO {
-	private String member_no;
+	private int member_no;
 	private String email_id;
 	private String member_name;
 	private String member_pw;
 	private String joinDate;
 	
-	public String getMember_no() {
+	public int getMember_no() {
 		return member_no;
 	}
-	public void setMember_no(String member_no) {
+	public void setMember_no(int member_no) {
 		this.member_no = member_no;
 	}
 	public String getEmail_id() {

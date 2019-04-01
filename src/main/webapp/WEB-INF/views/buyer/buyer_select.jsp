@@ -29,12 +29,14 @@
 				</div>
 				<!-- 전하실 말씀은 텍스트 버튼으로 만들어서 버튼 클릭하면 추가할 수 있도록 -->
 				<!-- <input type="hidden" class="form-control form-control-sm" placeholder="요청 사항"> -->
+				<form id="buy_form" action="${contextPath }/buyer/buyer_shipping" method="post">
 				<table id="table">
 				</table>
+				</form>
 				<div id="buy-block" style="display: none">
 				<div class="buy-block" >
 					<div class="amount-box">
-						<input type="text" class="amount" value="1">
+						<input type="text" name="amount" class="amount" value="1">
 						<div class="amount-btn-box">
 							<button class="btn-up" onclick="up()"><i class="fas fa-angle-up"></i></button>
 							<button class="btn-down" onclick="down()"><i class="fas fa-angle-down"></i></button>
@@ -48,7 +50,7 @@
 					</div>
 				</div>
 				</div>
-				<a class="btn btn-primary" href="/buyer/buyer_shipping" role="button">주문하기</a>
+				<button type="button" class="btn btn-primary" onclick="formSubmit()">주문하기</button>
 			</div>
 		</aside>
 	</div>
@@ -72,10 +74,10 @@
 		var name = $(this).children('.name').text();
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
-		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'" disabled>'
-		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" disabled></td></tr>'
+		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'">'
+		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'"></td></tr>'
 		+ '<tr><td>'+block.innerHTML+'</td></tr>'
-		+ '<tr style="display:none"><td>추가</td><tr>');
+		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr>');
 	});
 
 	// 작동 안함
@@ -85,19 +87,43 @@
 	// 체크박스 체크 이벤트
 	$("#table").delegate('.form-check-input','click', function(){
 		if($(this).is(':checked')){
-			$(this).parents("tr").next().css("display", "block");
+			var $tr = $(this).parents("tr").next()
+			$tr.css("display", "block");
+			$tr.find('input').attr("name", "memo");
 		}else{
 			// 최종 display:none이면 값을 null로 설정
-			$(this).parents("tr").next().css("display", "none");
+			var $tr = $(this).parents("tr").next()
+			$tr.css("display", "none");
+			$tr.find('input').removeAttr("name");
 		}
 	});
+	
+
+	// submit 
+	function formSubmit() {
+		var gname = document.getElementsByClassName("gname");
+	    var gprice = document.getElementsByClassName("gprice");
+	    var amount = document.getElementsByClassName("amount");
+	    var memo = document.getElementsByClassName("memo");
+	    if(gname[0].value=="") {
+	    	alert('상품을 선택하세요.');
+	    	return;
+	    }
+ 	    rename(gname);
+	    rename(gprice);
+	    rename(amount);
+	    rename(memo);
+	    document.getElementById("buy_form").submit();
+	}
 	
 	// 이름을 리스트 형식으로 재설정
 	  function rename(elements) {
 	  for (var i=0; i<elements.length; i++) {
-		    elements[i].name = "list["+ i+"]."+elements[i].name;
+		    if(elements[i].name != null) {
+		    elements[i].name = "list["+ i+"]."+elements[i].name;		    	
+		    }
 		}
-  }
+	}
 </script>
 </body>
 </html>

@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class CommonUtils {
 	// 공백 또는 null 체크
-
 	public static boolean isEmpty(Object obj) {
 
 		if(obj == null) return true;
