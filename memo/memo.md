@@ -1,49 +1,3 @@
-address_no는 오토 인크레니까 넣을 필요 없고
-
-member_no랑 주소, 배송비만 넣으면 됨
-
-
-
-로그인 인터셉터에서 member_no를 세션에 바인딩했음
-
-
-
-dto에 배열로 담고
-
-서비스에서 불러옴 
-
-서비스에서 addressVO.getMember_no를 해서 dao에 넣어줌
-
-
-
-리스트로 받아옴...
-
-리스트를 풀어서 넣어야 함....
-
-dto를 받아옴
-
-dto.list()하면 리스트가 나올 것.
-
-dto : list {
-
-dto list의 0번 1번을 name, price에 넣고, 
-
-}
-
-GoodsDTO [goods_name=null, goods_price=null, list=[GoodsDTO [goods_name=11, goods_price=11, list=null], GoodsDTO [goods_name=33, goods_price=33, list=null]]]
-
-list = goodsDTO.getList()
-
-list[0].getGoods_name() , list[0].getGoods_price()
-
- list[1]
-
-
-
-addressVO로 address_no 조회
-
-
-
 - [ ] 주소가 중복되면 안됨
 
 - [x] 배송비를 안넣으면 안됨
@@ -157,9 +111,25 @@ return goodsList;
 
 - [x] 배송 정보 테이블: 주문 번호, 배송 정보
 - [ ] buyer_shipping에서 취소하면 derete row
-- [ ] 배송 정보 넣음 -> 주문 번호 가져옴 -> 주문 상품 번호 넣음
+- [x] 배송 정보 넣음 -> 주문 번호 가져옴 -> 주문 상품 번호 넣음
 
 ##### !문제
 
 - [x] order_goods의 주문번호가 order_info의 주문번호랑 다름
   * insert 안에 selectkey 이용했는데  insert의 파라미터타입이 map종류인 경우, map에 key값이 들어가서 getter로 가져와야 함
+
+
+
+#### 구매현황
+
+- [ ]  db에서 : id를 찾고 -> 주문 날짜, 주문 번호, 배송 정보 (order_info)
+- [ ]  주문 번호 -> 상품 목록 (order_goods)
+- [ ]  배송 정보 수정 / 선택한 상품 주문 취소
+
+##### !문제
+
+- [ ]  한 페이지에서 여러 상품을 주문하면 나중에 select할 때 가나다 순서대로 나올 거임
+- [ ]  가격 합계 써줘야 함 (buyer_shipping)
+
+
+
