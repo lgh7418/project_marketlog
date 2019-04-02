@@ -27,16 +27,17 @@
       	<c:forEach var="goods" items="${item.list}">
         <tr>
           <td class="sm"><input type="checkbox">
-          <td><input type="text" name="goods_name" value="${goods.goods_name }" readonly></td>
-          <td><input type="text" name="goods_price" value="${goods.goods_price }" readonly></td>
-          <td><input type="text" name="amount" value="${goods.amount }" readonly></td>
-          <td><input type="text" name="memo" value="${goods.memo }" readonly></td>
+          <td>${goods.goods_name }</td>
+          <td>${goods.goods_price }</td>
+          <td>${goods.amount }</td>
+          <td>${goods.memo }</td>
           <td>주문 완료</td>
         </tr>
         </c:forEach>
       </tbody>
     </table>
-       <table class="table table-sm">
+   <form action="${contextPath }/mypage/modifyShipping" method="post">
+   <table class="table table-sm">
       <thead>
         <tr class="th">
           <th></th>
@@ -62,12 +63,12 @@
           </td>
         </tr>
         <tr>
-		  <th>요청사항</th>
+		  <th>요구사항</th>
           <td><input type="text" name="memo" value="${item.memo }" readonly></td>
         </tr>
       </tbody>
     </table>
-    <form action="${contextPath }/mypage/modifyShipping" method="post">
+
 	    <input type="hidden" name="order_no" value="${item.order_no }">
 	    <input type="submit" value="배송정보 수정">
     </form>

@@ -37,12 +37,24 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<OrderInfoVO> getOrderInfo(int member_no) throws Exception {
-		return orderDAO.selectOrderInfo(member_no);
+		List<OrderInfoVO> orderInfoList = orderDAO.selectOrderInfo(member_no);
+		// 주문번호를 파라미터로 상품 목록을 가져옴
+		for(OrderInfoVO vo : orderInfoList) {
+			int order_no = vo.getOrder_no();
+			List<OrderGoodsVO> orderGoodsList = orderDAO.selectOrderGoods(order_no);
+			vo.setList(orderGoodsList);
+		}
+		return orderInfoList;
 	}
 
 	@Override
 	public List<OrderGoodsVO> getOrderGoods(int order_no) throws Exception {
 		return orderDAO.selectOrderGoods(order_no);
+	}
+
+	@Override
+	public void updateOrderInfo(OrderInfoVO orderInfoVO) throws Exception {
+		orderDAO.updateOrderInfo(orderInfoVO);
 	}
 
 }

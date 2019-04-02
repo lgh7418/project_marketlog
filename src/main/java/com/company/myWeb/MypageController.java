@@ -1,8 +1,10 @@
 package com.company.myWeb;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -26,17 +28,21 @@ public class MypageController {
 		int member_no = (int) session.getAttribute("member_no");
 		// id를 파라미터로 배송 정보를 받아옴
 		List<OrderInfoVO> orderInfoList = orderService.getOrderInfo(member_no);
-		// 주문번호를 파라미터로 상품 목록을 가져옴
-		for(OrderInfoVO vo : orderInfoList) {
-			int order_no = vo.getOrder_no();
-			List<OrderGoodsVO> orderGoodsList = orderService.getOrderGoods(order_no);
-			vo.setList(orderGoodsList);
-		}
 		model.addAttribute("orderInfoList", orderInfoList);
 	}
 
 	@RequestMapping(value="/modifyShipping", method=RequestMethod.POST)
-	public void modifyShipping() throws Exception {
-		
+	public void modifyShipping(OrderInfoVO orderInfoVO, Model model) throws Exception {
+		model.addAttribute("orderInfo", orderInfoVO);
+	}
+	
+	@RequestMapping(value="/modifyShipping.do", method=RequestMethod.POST)
+	public void processShipping(OrderInfoVO orderInfoVO, HttpServletResponse res) throws Exception {
+		orderService.updateOrderInfo(orderInfoVO);
+		System.out.println(orderInfoVO);
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		out.println("<script>alert('수정되었습니다.'); location.href='/mypage/mypage';</script>");
+		out.flush();
 	}
 }

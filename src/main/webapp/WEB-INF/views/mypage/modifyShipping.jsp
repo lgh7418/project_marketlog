@@ -1,52 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../partials/header.jsp" %>
 
+<style>
+input[type="text"] {
+	width: 100%;
+}
+</style>
+
 <div class="content-block">
         <div class="shipping-form">
-        <form action="${contextPath }/buyer/buyer_result" method="post">
+        <form action="${contextPath }/mypage/modifyShipping.do" method="post">
           <table>
             <tr>
               <th>받으시는분</th>
-              <td><input type="text" name="recipient" class="form-control" /></td>
+              <td><input type="text" name="recipient" class="form-control" value="${orderInfo.recipient }"></td>
             </tr>
             <tr>
               <th>주소</th>
               <td>
                 <div class="form-inline">
                   <div class="form-group mb-2">
-                    <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호"/>
+                    <input type="text" id="postcode" name="postcode" class="form-control" value="${orderInfo.postcode }">
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
                     <input type="button" onclick="execDaumPostcode()" value="주소 찾기">
                   </div>
                 </div>
-                <input type="text" id="address" name="address" class="form-control" placeholder="주소">
-                <input type="text" id="detailAddress" name="detail_address" class="form-control" placeholder="상세주소">
+                <input type="text" id="address" name="address" class="form-control" value="${orderInfo.address }">
+                <input type="text" id="detailAddress" name="detail_address" class="form-control" value="${orderInfo.detail_address }">
               </td>
             </tr>
             <tr>
               <th>휴대전화</th>
               <td>
-                <select name="phone1">
-                  <option value="010">010</option>
-                  <option value="011">011</option>
-                  <option value="016">016</option>
-                  <option value="017">017</option>
-                  <option value="018">018</option>
-                  <option value="019">019</option>
-                </select>
-                - <input type="text" name="phone2" /> -
-                <input type="text" name="phone3" />
+                <input type="text" name="phone1" value="0${orderInfo.phone1 }" size="2"> -
+                <input type="text" name="phone2" value="${orderInfo.phone2 }" size="2"> -
+                <input type="text" name="phone3" value="${orderInfo.phone3 }" size="2">
               </td>
             </tr>
             <tr>
               <th>배송시요구사항</th>
               <td>
-                <input type="text" name="memo" class="form-control" />
+                <input type="text" name="memo" class="form-control" value="${orderInfo.memo }">
               </td>
             </tr>
           </table>
-          <input type="submit" class="btn btn-primary" value="주문하기">
+          <input type="hidden" name="order_no" value="${orderInfo.order_no }">
+          <input type="submit" class="btn btn-primary" value="수정하기">
         </form>
         </div>
      </div>

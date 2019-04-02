@@ -16,6 +16,7 @@ public class OrderInfoVO {
 	private int phone3;
 	private String memo;
 	private Date order_time;
+	private int shipping;
 	private List<OrderGoodsVO> list;
 	
 	
@@ -103,6 +104,12 @@ public class OrderInfoVO {
 				+ ", recipient=" + recipient + ", postcode=" + postcode + ", address=" + address + ", detail_address="
 				+ detail_address + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", memo=" + memo
 				+ ", order_time=" + order_time + "]";
+	}
+	public int getShipping() {
+		return shipping;
+	}
+	public void setShipping(int shipping) {
+		this.shipping = shipping;
 	}
 	
 }

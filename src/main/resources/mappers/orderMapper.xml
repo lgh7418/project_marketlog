@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<select id="selectOrderInfo" resultMap="orderInfoMap">
-		select * from p_order_info where member_no = #{member_no}
+		select * from p_order_info where member_no = #{member_no} order by order_no desc
 	</select>
 	
 	<resultMap type="OrderGoodsVO" id="orderGoodsMap">
@@ -45,5 +45,33 @@
 	
 	<select id="selectOrderGoods" resultMap="orderGoodsMap">
 		select * from p_order_goods where order_no = #{order_no}
+	</select>
+	
+	<update id="updateOrderInfo">
+		update p_order_info
+		set recipient=#{recipient}, postcode=#{postcode}, address=#{address}, detail_address=#{detail_address},
+		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3}, memo=#{memo}
+		where order_no = #{order_no}
+	</update>
+	
+	<resultMap id="orderInfoListMap" type="OrderInfoVO">
+		<result property="order_no" column="order_no" />
+		<result property="recipient" column="recipient" />
+		<result property="postcode" column="postcode" />
+		<result property="address" column="address" />
+		<result property="detail_address" column="detail_address" />
+		<result property="phone1" column="phone1" />
+		<result property="phone2" column="phone2" />
+		<result property="phone3" column="phone3" />
+		<result property="memo" column="memo" />
+		<result property="order_time" column="order_time" />
+		<result property="shipping" column="shipping"/>
+	</resultMap>
+	
+	<select id="orderInfoList" resultMap="orderInfoListMap">
+		select order_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo, order_time, shipping 
+		from p_order_info as info join p_address as ad 
+		on info.address_no=ad.address_no 
+		where ad.member_no=#{member_no};
 	</select>
 </mapper>

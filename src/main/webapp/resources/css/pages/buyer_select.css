@@ -125,3 +125,9 @@
 	display: inline-block;
 	height: 13px;
 }
+
+.btn-down:focus,
+.btn-up:focus {
+    border: 1.4px solid rgba(0,123,255,.55);
+    outline: none;
+}
