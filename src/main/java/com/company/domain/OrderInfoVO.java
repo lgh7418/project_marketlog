@@ -1,6 +1,7 @@
 package com.company.domain;
 
 import java.sql.Date;
+import java.util.List;
 
 public class OrderInfoVO {
 	private int order_no;
@@ -15,6 +16,7 @@ public class OrderInfoVO {
 	private int phone3;
 	private String memo;
 	private Date order_time;
+	private List<OrderGoodsVO> list;
 	
 	
 	public int getOrder_no() {
@@ -88,6 +90,19 @@ public class OrderInfoVO {
 	}
 	public void setOrder_time(Date order_time) {
 		this.order_time = order_time;
+	}
+	public List<OrderGoodsVO> getList() {
+		return list;
+	}
+	public void setList(List<OrderGoodsVO> list) {
+		this.list = list;
+	}
+	@Override
+	public String toString() {
+		return "OrderInfoVO [order_no=" + order_no + ", member_no=" + member_no + ", address_no=" + address_no
+				+ ", recipient=" + recipient + ", postcode=" + postcode + ", address=" + address + ", detail_address="
+				+ detail_address + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", memo=" + memo
+				+ ", order_time=" + order_time + "]";
 	}
 	
 }

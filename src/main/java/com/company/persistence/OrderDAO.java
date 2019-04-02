@@ -9,4 +9,5 @@ public interface OrderDAO {
 	public int insertOrderInfo(OrderInfoVO orderInfoVO) throws Exception;
 	public void insertOrderGoods(OrderGoodsVO orderGoodsVO) throws Exception;
 	public List<OrderInfoVO> selectOrderInfo(int member_no);
+	public List<OrderGoodsVO> selectOrderGoods(int order_no);
 }

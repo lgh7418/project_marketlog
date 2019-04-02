@@ -35,12 +35,15 @@
 		select * from p_order_info where member_no = #{member_no}
 	</select>
 	
-<!-- 	<resultMap type="goodsVO" id="goodsMap">
+	<resultMap type="OrderGoodsVO" id="orderGoodsMap">
+		<result property="order_no" column="order_no" />
 		<result property="goods_name" column="goods_name" />
 		<result property="goods_price" column="goods_price" />
+		<result property="amount" column="amount"/>
+		<result property="memo" column="memo"/>
 	</resultMap>
 	
-	<select id="selectGoods" resultMap="goodsMap">
-		select goods_name, goods_price from p_goods where address_no = #{address_no}
-	</select> -->
+	<select id="selectOrderGoods" resultMap="orderGoodsMap">
+		select * from p_order_goods where order_no = #{order_no}
+	</select>
 </mapper>

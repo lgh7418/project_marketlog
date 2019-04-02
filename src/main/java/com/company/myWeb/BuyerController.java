@@ -60,7 +60,6 @@ public class BuyerController {
 	
 	@RequestMapping(value="/buyer_shipping", method=RequestMethod.POST)
 	public void addOderGoods(OrderGoodsVO vo) throws Exception {
-		System.out.println(vo);
 		orderGoodsVO = vo;
 	}
 	
@@ -69,7 +68,6 @@ public class BuyerController {
 		int member_no = (int) session.getAttribute("member_no");
 		int address_no = (int) session.getAttribute("address_no");
 		orderService.addOrder(orderInfoVO, orderGoodsVO, member_no, address_no);
-		System.out.println(orderInfoVO+","+orderGoodsVO+","+member_no+","+address_no);
 		session.removeAttribute("address_no");
 	}
 }

@@ -32,8 +32,17 @@ public class OrderServiceImpl implements OrderService {
 				goods.setOrder_no(order_no);
 				orderDAO.insertOrderGoods(goods);
 			}
-			System.out.println(name);
 		}
+	}
+
+	@Override
+	public List<OrderInfoVO> getOrderInfo(int member_no) throws Exception {
+		return orderDAO.selectOrderInfo(member_no);
+	}
+
+	@Override
+	public List<OrderGoodsVO> getOrderGoods(int order_no) throws Exception {
+		return orderDAO.selectOrderGoods(order_no);
 	}
 
 }

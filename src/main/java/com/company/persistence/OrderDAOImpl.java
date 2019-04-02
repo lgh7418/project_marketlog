@@ -31,4 +31,9 @@ public class OrderDAOImpl implements OrderDAO {
 	public List<OrderInfoVO> selectOrderInfo(int member_no) {
 		return sqlSession.selectList(namespace+".selectOrderInfo", member_no);
 	}
+
+	@Override
+	public List<OrderGoodsVO> selectOrderGoods(int order_no) {
+		return sqlSession.selectList(namespace+".selectOrderGoods", order_no);
+	}
 }
