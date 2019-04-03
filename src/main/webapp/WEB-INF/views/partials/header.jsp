@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
 </head>
 <body>
   <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    	<a class="navbar-brand" href="${contextPath}/main/home" ><img src="../resources/images/logo.png" alt="logo" width="230px"></a>
+    	<a class="navbar-brand" href="${contextPath}/main/home" ><img src="${contextPath }/resources/images/logo.png" alt="logo" width="230px"></a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>	

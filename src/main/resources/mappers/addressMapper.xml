@@ -4,11 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.addressMapper">
 	<insert id="insertAddress">
-		insert into p_address (member_no, goods_address, shipping)
+		insert into address (member_no, goods_address, shipping)
 		values (#{member_no}, #{goods_address}, #{shipping})
 	</insert>
 	
 	<select id="getAddressNo" parameterType="String" resultType="Integer">
-		select address_no from p_address where goods_address = #{goods_address}
+		select address_no from address where goods_address = #{goods_address}
+	</select>
+	
+	<resultMap id="addressMap" type="AddressVO">
+		<result property="address_no" column="address_no"/>
+		<result property="member_no" column="member_no"/>
+		<result property="goods_address" column="goods_address"/>
+		<result property="shipping" column="shipping"/>
+	</resultMap>
+	
+	<select id="selectAddressList" resultMap="addressMap">
+		select * from address where member_no=#{member_no}
+	</select>
+	
+	<select id="selectAddress" resultMap="addressMap">
+		select * from address where address_no=#{address_no}
 	</select>
 </mapper>

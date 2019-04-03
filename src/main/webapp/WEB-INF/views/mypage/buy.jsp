@@ -11,7 +11,7 @@
     </style>
     <p class="font-navy"><b>주문 내역</b></p>
     <c:forEach var="item" items="${orderInfoList }">
-    <p>${item.order_time }</p>
+    <p><fmt:formatDate value="${item.order_time }" pattern="yyyy.MM.dd"/></p>
     <table class="table table-sm">
       <thead>
         <tr class="th">

@@ -10,4 +10,6 @@ public interface OrderService {
 	public List<OrderInfoVO> getOrderInfo(int member_no) throws Exception;
 	public List<OrderGoodsVO> getOrderGoods(int order_no) throws Exception;
 	public void updateOrderInfo(OrderInfoVO orderInfoVO) throws Exception;
+	public List<OrderInfoVO> getSellerOrderInfo(int member_no, int order_status) throws Exception;
+	public void updateOrderStatus(int order_no, int order_status) throws Exception;
 }

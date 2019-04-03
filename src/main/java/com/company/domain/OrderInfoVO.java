@@ -1,6 +1,7 @@
 package com.company.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class OrderInfoVO {
@@ -15,8 +16,9 @@ public class OrderInfoVO {
 	private int phone2;
 	private int phone3;
 	private String memo;
-	private Date order_time;
+	private Timestamp order_time;
 	private int shipping;
+	private int order_status;
 	private List<OrderGoodsVO> list;
 	
 	
@@ -86,10 +88,10 @@ public class OrderInfoVO {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	public Date getOrder_time() {
+	public Timestamp getOrder_time() {
 		return order_time;
 	}
-	public void setOrder_time(Date order_time) {
+	public void setOrder_time(Timestamp order_time) {
 		this.order_time = order_time;
 	}
 	public List<OrderGoodsVO> getList() {
@@ -111,5 +113,11 @@ public class OrderInfoVO {
 	public void setShipping(int shipping) {
 		this.shipping = shipping;
 	}
-	
+	public int getOrder_status() {
+		return order_status;
+	}
+	public void setOrder_status(int order_status) {
+		this.order_status = order_status;
+	}
+
 }

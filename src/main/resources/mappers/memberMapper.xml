@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.memberMapper">
 	<insert id="insertNewMember">
-		insert into p_member (email_id, member_pw, member_name)
+		insert into member (email_id, member_pw, member_name)
 		values (#{email_id}, #{member_pw}, #{member_name})
 	</insert>
 	
@@ -19,11 +19,11 @@
 	
 	<!-- 로그인 맵퍼 -->
 	<select id="login" resultMap="memberMap">
-		select * from p_member where email_id = #{email_id} and member_pw = #{member_pw}
+		select * from member where email_id = #{email_id} and member_pw = #{member_pw}
 	</select>
 	
 	<!-- ID 중복 검사 -->
 	<select id="selectOverlappedID" parameterType="String" resultType="String">
-		select * from p_member where email_id = #{id}
+		select * from member where email_id = #{id}
 	</select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.company.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -38,12 +40,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<OrderInfoVO> getOrderInfo(int member_no) throws Exception {
 		List<OrderInfoVO> orderInfoList = orderDAO.selectOrderInfo(member_no);
-		// 주문번호를 파라미터로 상품 목록을 가져옴
-		for(OrderInfoVO vo : orderInfoList) {
-			int order_no = vo.getOrder_no();
-			List<OrderGoodsVO> orderGoodsList = orderDAO.selectOrderGoods(order_no);
-			vo.setList(orderGoodsList);
-		}
+		setOrderGoodsList(orderInfoList);
 		return orderInfoList;
 	}
 
@@ -55,6 +52,33 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void updateOrderInfo(OrderInfoVO orderInfoVO) throws Exception {
 		orderDAO.updateOrderInfo(orderInfoVO);
+	}
+
+	@Override
+	public List<OrderInfoVO> getSellerOrderInfo(int member_no, int order_status) throws Exception {
+		Map<String, Integer> selector = new HashMap<String, Integer>();
+		selector.put("member_no", member_no);
+		selector.put("order_status", order_status);
+		List<OrderInfoVO> sellerOrderInfoList = orderDAO.selectSellerOrderInfo(selector);
+		setOrderGoodsList(sellerOrderInfoList);
+		return sellerOrderInfoList;
+	}
+
+	// orderInfoList 각각의 orderInfo에 orderGoodsList 넣음
+	public void setOrderGoodsList(List<OrderInfoVO> list) {
+		for(OrderInfoVO vo : list) {
+			int order_no = vo.getOrder_no();
+			List<OrderGoodsVO> orderGoodsList = orderDAO.selectOrderGoods(order_no);
+			vo.setList(orderGoodsList);
+		}
+	}
+
+	@Override
+	public void updateOrderStatus(int order_no, int order_status) throws Exception {
+		Map<String, Integer> selector = new HashMap<String, Integer>();
+		selector.put("order_no", order_no);
+		selector.put("order_status", order_status);
+		orderDAO.updateOrderStatus(selector);
 	}
 
 }

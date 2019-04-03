@@ -86,13 +86,12 @@
 	});
 	// 체크박스 체크 이벤트
 	$("#table").delegate('.form-check-input','click', function(){
+		var $tr = $(this).parents("tr").next();
 		if($(this).is(':checked')){
-			var $tr = $(this).parents("tr").next()
 			$tr.css("display", "block");
 			$tr.find('input').attr("name", "memo");
 		}else{
 			// 최종 display:none이면 값을 null로 설정
-			var $tr = $(this).parents("tr").next()
 			$tr.css("display", "none");
 			$tr.find('input').removeAttr("name");
 		}

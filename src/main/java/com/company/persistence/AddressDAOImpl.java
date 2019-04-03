@@ -1,5 +1,7 @@
 package com.company.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,4 +25,13 @@ public class AddressDAOImpl implements AddressDAO {
 		return sqlSession.selectOne(namespace + ".getAddressNo", goods_address);
 	}
 
+	@Override
+	public List<AddressVO> selectAddressList(int member_no) throws Exception {
+		return sqlSession.selectList(namespace+".selectAddressList", member_no);
+	}
+
+	@Override
+	public AddressVO selectAddress(int address_no) throws Exception {
+		return sqlSession.selectOne(namespace+".selectAddress", address_no);
+	}
 }

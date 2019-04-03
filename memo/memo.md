@@ -3,87 +3,13 @@
 - [x] 배송비를 안넣으면 안됨
   * 배송비를 안넣으면 다음으로 못 넘어가게 함
 
-#### seller/input 처리
-
-```js
-if (
-```
-
 #### seller_form
 
-* 테이블 왼쪽에 삭제 버튼 추가
+* [ ] 테이블 왼쪽에 삭제 버튼 추가
+
+* [ ] 상품이름이 null이면 mapper에 넣지 않기
 
 
-
-상품이름이 null이면 mapper에 넣지 않기
-
-
-
-### buyer/input -> buyer_select
-
-주소 받아옴(controller) 
-
-* 주소를 모바일 버전으로 처리
-* 주소를 바인딩해서 값 넘겨줌
-* iframe의 src에 입력
-
-주소를 넣어서 주소 번호 받아옴(service)
-
-if 주소가 일치하는 페이지가 있다면
-
-* 주소번호랑 일치하는 상품 목록 받아옴 (service) <완료!>
-* 상품 목록을 option 태그에 뿌려줌
-
-### buyer_select
-
-옵션을 선택
-
-* 선택한 옵션(상품 이름, 가격)이 아래 표에 뿌려지고
-
-* 수량 버튼이랑 전달사항 체크가 뜸
-* if 전달사항 체크
-  * 전달사항 input 박스가 뜸
-
-'주문하기' 버튼 클릭
-
-* 표의 값을 받아서 db에 넘김
-* 주문번호, 주소 번호, 상품 이름, 상품 수량, 전달사항
-* 주문번호, 총가격, 배송비
-
-
-
-
-
-판매하기 
-
-#### service
-
-```java
-// 상품 목록 조회
-List<GoodsVO> goodsList = goodsDAO.selectGoods(GoodsVO);
-// 상품이 없는 경우 null을 반환
-/*if(goodsList.size()==0) {
-    return null;
-}*/
-// 상품정보를 반환
-return goodsList;
-```
-
-#### view
-
-```jsp
-<c:forEach var="goods" items="${goodsList}">
-    ${goods[0]} // goods_name
-    ${goods[1]} // goods_price
-```
-
-버튼 클릭하면 
-
-밑에 뜨게 함
-
-
-
-이벤트: 테이블을 만들어놓고 display:hidden을 보이게 설정
 
 #### buyer_select
 
@@ -133,7 +59,10 @@ return goodsList;
 - [ ] 옆에 nav를 위치 고정하고 background color를 고정으로 해야 함
 - [ ] OrderService의 addOrder에 member_no 등을 setter로 vo에 넣어서 dao에 들어가는 파라미터 줄이기
 - [ ] if 주문상태가 상품발송이면 배송정보를 변경할 수 없어야 함
-- [ ] 최근 주문이 먼저 나와야 함( order_no가 큰 것 부터 정렬)
+- [x] 최근 주문이 먼저 나와야 함( order_no가 큰 것 부터 정렬)
+
+##### *옵션
+
 - [ ] db에 주소 넣을 때 https:// 떼고 넣기 -> 나중에 select like 이용
 - [ ] 다른 테이블 select 값이 필요한 것 -> 서브 쿼리로 바꾸기
 
@@ -151,11 +80,23 @@ name을 list로 받아서 name=#{name}인 곳을 삭제
 
 #### 판매현황
 
-- [ ] '새로 들어온 주문이 없습니다.'
+- [x] '새로 들어온 주문이 없습니다.'
+- [ ] 판매자 회원이면 판매현황이 먼제 나타나게 함 
+  * 기본적으로 구매현황, 내정보 수정 페이지 있고, 판매 중이면
+- [ ] 주문 상태 발송 완료로 바꾸고 완료된 주문에 넣기
+- [ ] 링크 클릭하면 구매 사이트로 들어갈 수 있게해야 함
+  * 로그인 하시오
 
-member_no가 session에 저장된 membe_no랑 같은 곳에서 address_no를 가져옴 (p_address)
+##### *옵션
 
-address_no가 같은 곳에서 주문 정보를 가져옴 (p_order_info)
+- [ ] 취소된 주문은 text-decoration 가운데 줄 주고 취소된 주문 표시
+  * 취소된 주문 삭제 버튼
+  * 주문완료 상태의 주문은 구매자가 언제든지 취소할 수 있습니다. 상품준비중인 경우 구매자의 취소 신청을 거부할 수 있습니다.
+- [ ] 판매 현황 완료된 리스트랑 아닌 것 맵에 담기
+- [ ] 펼쳐보기 부드러운 액션 주기
 
-order_no가 같은 곳에서 주문 상품 정보를 가져옴 (p_order_goods)
+##### !문제
 
+- [ ] mysql  상의 datetime이랑 데이터를 불러왔을 때 시간이 안 맞음
+  * servertime=UTC 설정 되어서 그럼
+- [ ] 완료된 주문 position fixed로 주기

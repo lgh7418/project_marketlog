@@ -1,69 +1,168 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    <p>새로 들어온 주문</p>
-<table class="table table-striped">
-  <tbody>
-    <tr>
-      <td class="sm"><input type="checkbox"></td>
-      <th scope="row" class="sm">1</th>
-      <td>김뫄뫄님의 주문서</td>
-    </tr>
-    <tr>
-      <td><input type="checkbox"></td>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-    </tr>
-    <tr>
-      <td><input type="checkbox"></td>
-      <th scope="row">3</th>
-      <td>Larry</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="accordion" id="accordionExample">
+    <p class="font-navy"><b>새로 들어온 주문</b></p>
+<div class="accordion" id="accordion">
+<c:choose>
+	<c:when test="${empty sellerOrderInfoList}">
+	새로 들어온 주문이 없습니다.
+	</c:when>
+	<c:otherwise>
+		<input type="checkbox" id="collapse">펼쳐보기
+	</c:otherwise>
+</c:choose>
+<c:forEach var="item" items="${sellerOrderInfoList }">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${item.order_no }" aria-expanded="false" aria-controls="collapse${item.order_no }">
+          ${item.recipient}님의 주문서
         </button>
       </h2>
+      <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
+      <a href="${contextPath }/mypage/sell/${item.order_no}/1" class="finished">완료</a>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapse${item.order_no }" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      	<table class="table table-sm">
+	      <thead>
+	        <tr class="th">
+	          <th>상품명</th>
+	          <th>상품 가격</th>
+	          <th>수량</th>
+	          <th>전달 사항</th>
+	          <th>주문 상태</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	<c:forEach var="goods" items="${item.list}">
+	        <tr>
+	          <td>${goods.goods_name }</td>
+	          <td>${goods.goods_price }</td>
+	          <td>${goods.amount }</td>
+	          <td>${goods.memo }</td>
+	          <td>주문 완료</td>
+	        </tr>
+	        </c:forEach>
+	      </tbody>
+	    </table>
+      	<table class="table table-sm">
+	      <thead>
+	        <tr class="th">
+	          <th></th>
+	          <th>배송 정보</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+			  <th>수령인</th>
+	          <td><input type="text" name="recipient" value="${item.recipient }" readonly></td>
+	        </tr>
+	        <tr>
+			  <th>연락처</th>
+	          <td><input type="text" name="phone1" value="0${item.phone1 }" size="1" readonly>-
+	          	<input type="text" name="phone2" value="${item.phone2 }" size="2" readonly>-
+	          	<input type="text" name="phone3" value="${item.phone3 }" size="2" readonly></td>
+	        </tr>
+	        <tr>
+			  <th>배송지</th>
+	          <td><input type="text" name="postcode" value="${item.postcode }" readonly><br>
+	          	<input type="text" name="address" value="${item.address } ${item.detail_address }" readonly>
+	          </td>
+	        </tr>
+	        <tr>
+			  <th>요구사항</th>
+	          <td><input type="text" name="memo" value="${item.memo }" readonly></td>
+	        </tr>
+	      </tbody>
+    	</table>
       </div>
     </div>
   </div>
+</c:forEach>
+<p class="font-navy"><b>완료된 주문</b></p>
+<c:if test="${empty finishedOrderList}">
+	완료된 주문이 없습니다.
+</c:if>
+<c:forEach var="item" items="${finishedOrderList }">
   <div class="card">
-    <div class="card-header" id="headingTwo">
+    <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${item.order_no }" aria-expanded="false" aria-controls="collapse${item.order_no }">
+          ${item.recipient}님의 주문서
         </button>
       </h2>
+      <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
+      <a href="${contextPath }/mypage/sell/${item.order_no}/0" class="finished">완료취소</a>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+    <div id="collapse${item.order_no }" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      	<table class="table table-sm">
+	      <thead>
+	        <tr class="th">
+	          <th>상품명</th>
+	          <th>상품 가격</th>
+	          <th>수량</th>
+	          <th>전달 사항</th>
+	          <th>주문 상태</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      	<c:forEach var="goods" items="${item.list}">
+	        <tr>
+	          <td>${goods.goods_name }</td>
+	          <td>${goods.goods_price }</td>
+	          <td>${goods.amount }</td>
+	          <td>${goods.memo }</td>
+	          <td>주문 완료</td>
+	        </tr>
+	        </c:forEach>
+	      </tbody>
+	    </table>
+      	<table class="table table-sm">
+	      <thead>
+	        <tr class="th">
+	          <th></th>
+	          <th>배송 정보</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr>
+			  <th>수령인</th>
+	          <td><input type="text" name="recipient" value="${item.recipient }" readonly></td>
+	        </tr>
+	        <tr>
+			  <th>연락처</th>
+	          <td><input type="text" name="phone1" value="0${item.phone1 }" size="1" readonly>-
+	          	<input type="text" name="phone2" value="${item.phone2 }" size="2" readonly>-
+	          	<input type="text" name="phone3" value="${item.phone3 }" size="2" readonly></td>
+	        </tr>
+	        <tr>
+			  <th>배송지</th>
+	          <td><input type="text" name="postcode" value="${item.postcode }" readonly><br>
+	          	<input type="text" name="address" value="${item.address } ${item.detail_address }" readonly>
+	          </td>
+	        </tr>
+	        <tr>
+			  <th>요구사항</th>
+	          <td><input type="text" name="memo" value="${item.memo }" readonly></td>
+	        </tr>
+	      </tbody>
+    	</table>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
+</c:forEach>
 </div>
+<script>
+$("#collapse").click(function() {
+	var collapse = $('.collapse');
+	if($(this).is(':checked')){
+		collapse.addClass('show');
+	}else{
+		collapse.removeClass('show');
+	}
+})
+</script>

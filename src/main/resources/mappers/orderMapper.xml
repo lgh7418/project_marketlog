@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.orderMapper">
 	<insert id="insertOrderInfo">
-		insert into p_order_info (member_no, address_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo)
+		insert into order_info (member_no, address_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo)
 		values (#{member_no}, #{address_no}, #{recipient}, #{postcode}, #{address}, #{detail_address}, #{phone1}, #{phone2}, #{phone3}, #{memo})
 		<selectKey resultType="int" keyProperty="order_no" order="AFTER">
 			select last_insert_id()
@@ -12,7 +12,7 @@
 	</insert>
 
 	<insert id="insertOrderGoods">
-		insert into p_order_goods (order_no, goods_name, goods_price, amount, memo)
+		insert into order_goods (order_no, goods_name, goods_price, amount, memo)
 		values (#{order_no}, #{goods_name}, #{goods_price}, #{amount}, #{memo})
 	</insert>
 
@@ -32,7 +32,7 @@
 	</resultMap>
 	
 	<select id="selectOrderInfo" resultMap="orderInfoMap">
-		select * from p_order_info where member_no = #{member_no} order by order_no desc
+		select * from order_info where member_no = #{member_no} order by order_no desc
 	</select>
 	
 	<resultMap type="OrderGoodsVO" id="orderGoodsMap">
@@ -44,17 +44,17 @@
 	</resultMap>
 	
 	<select id="selectOrderGoods" resultMap="orderGoodsMap">
-		select * from p_order_goods where order_no = #{order_no}
+		select * from order_goods where order_no = #{order_no}
 	</select>
 	
 	<update id="updateOrderInfo">
-		update p_order_info
+		update order_info
 		set recipient=#{recipient}, postcode=#{postcode}, address=#{address}, detail_address=#{detail_address},
 		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3}, memo=#{memo}
 		where order_no = #{order_no}
 	</update>
 	
-	<resultMap id="orderInfoListMap" type="OrderInfoVO">
+	<resultMap id="sellerOrderInfoMap" type="OrderInfoVO">
 		<result property="order_no" column="order_no" />
 		<result property="recipient" column="recipient" />
 		<result property="postcode" column="postcode" />
@@ -68,10 +68,16 @@
 		<result property="shipping" column="shipping"/>
 	</resultMap>
 	
-	<select id="orderInfoList" resultMap="orderInfoListMap">
-		select order_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo, order_time, shipping 
-		from p_order_info as info join p_address as ad 
+	<select id="selectSellerOrderInfo" resultMap="sellerOrderInfoMap">
+		select order_no, recipient, postcode, address, detail_address, 
+		phone1, phone2, phone3, memo, order_time, shipping
+		from order_info as info join address as ad 
 		on info.address_no=ad.address_no 
-		where ad.member_no=#{member_no};
+		where ad.member_no=#{member_no} and info.order_status=#{order_status}
 	</select>
+	
+	<update id="updateOrderStatus">
+		update order_info set order_status=#{order_status}
+		where order_no=#{order_no}
+	</update>
 </mapper>
