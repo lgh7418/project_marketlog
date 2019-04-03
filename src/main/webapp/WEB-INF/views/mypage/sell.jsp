@@ -14,15 +14,16 @@
 <c:forEach var="item" items="${sellerOrderInfoList }">
   <div class="card">
     <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
+      <div class="float-left">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${item.order_no }" aria-expanded="false" aria-controls="collapse${item.order_no }">
           ${item.recipient}님의 주문서
         </button>
-      </h2>
+     </div>
+     <div class="float-right">
       <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
       <a href="${contextPath }/mypage/sell/${item.order_no}/1" class="finished">완료</a>
+     </div>
     </div>
-
     <div id="collapse${item.order_no }" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       	<table class="table table-sm">
@@ -88,11 +89,12 @@
 <c:forEach var="item" items="${finishedOrderList }">
   <div class="card">
     <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
+     <div class="float-left">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${item.order_no }" aria-expanded="false" aria-controls="collapse${item.order_no }">
           ${item.recipient}님의 주문서
         </button>
-      </h2>
+ 	</div>
+    <div class="float-right">
       <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
       <a href="${contextPath }/mypage/sell/${item.order_no}/0" class="finished">완료취소</a>
     </div>
@@ -106,7 +108,6 @@
 	          <th>상품 가격</th>
 	          <th>수량</th>
 	          <th>전달 사항</th>
-	          <th>주문 상태</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -116,7 +117,6 @@
 	          <td>${goods.goods_price }</td>
 	          <td>${goods.amount }</td>
 	          <td>${goods.memo }</td>
-	          <td>주문 완료</td>
 	        </tr>
 	        </c:forEach>
 	      </tbody>
@@ -158,7 +158,7 @@
 </div>
 <script>
 $("#collapse").click(function() {
-	var collapse = $('.collapse');
+	var collapse = $('.card .collapse');
 	if($(this).is(':checked')){
 		collapse.addClass('show');
 	}else{

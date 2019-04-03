@@ -40,9 +40,6 @@
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/buyer/input">구매하기</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="${contextPath}/seller/input">판매하기</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">QnA</a>
-				</li>
 			</ul>
 		</div>	
   </header>

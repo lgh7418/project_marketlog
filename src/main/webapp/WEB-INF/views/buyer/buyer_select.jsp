@@ -23,8 +23,6 @@
 								<span class="price">${goods.goods_price }</span>
 							</button>
 						</c:forEach>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
 					</div>
 				</div>
 				<!-- 전하실 말씀은 텍스트 버튼으로 만들어서 버튼 클릭하면 추가할 수 있도록 -->
