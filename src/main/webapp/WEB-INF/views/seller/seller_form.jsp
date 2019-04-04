@@ -5,7 +5,8 @@
 <script>
 $(document).ready(function() {
 	$("#add-row").click(function() {
-		$("#product_table > tbody:first").append('<tr><td><input type="text" class="form-control gname" name="goods_name"></td>'
+		$("#product_table > tbody:first").append('<tr><td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>'
+		+ '<td><input type="text" class="form-control gname" name="goods_name"></td>'
 		+ '<td><input type="text" class="form-control gprice" name="goods_price"></td></tr>');
 	});
 });
@@ -23,12 +24,14 @@ $(document).ready(function() {
           <table class="table table-bordered" id="product_table">
               <thead>
                  <tr>
+                   <th></th>
                   <th>상품명</th>
                   <th>가격</th>
                 </tr>  	
             </thead>
             <tbody>
                 <tr>
+                  <td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>
                   <td><input type="text" class="form-control gname" name="goods_name"></td>
                   <td><input type="text" class="form-control gprice" name="goods_price"></td>
                 </tr>
@@ -91,5 +94,10 @@ $(document).ready(function() {
 	  }
 	  return false;
   }
+	function deleteRow(obj){
+		var tr = $(obj).parents("tr");
+		console.log(tr);
+		tr.remove();
+  	}
   </script>
 </html>

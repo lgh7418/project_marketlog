@@ -7,7 +7,7 @@
 } */
 
 .nav-menu {
-    padding-top: 70px;
+    padding: 70px 15px;
     height: 100vh;
     border-right: 2px solid #4F86C6;
 	background-color: white;
@@ -17,12 +17,21 @@
 }
 
 .mypage-main {
-	display: grid;
-    grid-template-columns: 20vw auto;
+    width: 100%;
+   	margin-left: 22vw;
+    margin-right: 4%;
 }
 .tab-content {
 	padding-top: 78px;
-	margin-left: 7%;
-	margin-right: 3%;
-    grid-column-start: 2;
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.mypage-main p {
+	margin-top: 2rem; 
+}
+
+input#collapse {
+    margin-left: 30px;
+    margin-right: 1px;
 }

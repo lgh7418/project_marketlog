@@ -21,7 +21,7 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	@Override
-	public Integer getAddressNo(String goods_address) throws Exception {
+	public AddressVO getAddressNo(String goods_address) throws Exception {
 		return sqlSession.selectOne(namespace + ".getAddressNo", goods_address);
 	}
 

@@ -19,12 +19,12 @@
           ${item.recipient}님의 주문서
         </button>
      </div>
-     <div class="float-right">
-      <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
-      <a href="${contextPath }/mypage/sell/${item.order_no}/1" class="finished">완료</a>
+     <div class="float-right pt-1">
+      <span><fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/></span>
+      <a href="${contextPath }/mypage/sell/${item.order_no}/1" class="finished btn btn-danger btn-sm">완료</a>
      </div>
     </div>
-    <div id="collapse${item.order_no }" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapse${item.order_no }" class="collapse new" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       	<table class="table table-sm">
 	      <thead>
@@ -94,9 +94,10 @@
           ${item.recipient}님의 주문서
         </button>
  	</div>
-    <div class="float-right">
+    <div class="float-right pt-1">
       <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
-      <a href="${contextPath }/mypage/sell/${item.order_no}/0" class="finished">완료취소</a>
+      <a href="${contextPath }/mypage/sell/${item.order_no}/0" class="finished btn btn-outline-danger btn-sm">취소</a>
+    </div>
     </div>
 
     <div id="collapse${item.order_no }" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -158,7 +159,7 @@
 </div>
 <script>
 $("#collapse").click(function() {
-	var collapse = $('.card .collapse');
+	var collapse = $('.card .collapse.new');
 	if($(this).is(':checked')){
 		collapse.addClass('show');
 	}else{

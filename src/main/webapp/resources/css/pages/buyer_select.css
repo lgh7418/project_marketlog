@@ -23,14 +23,17 @@
 
 .buy-input {
 	padding-top: 40px;
-	max-width: 300px;
+	width: 300px;
 	height: calc(97vh - 70px);
 	position: relative;
 }
 
-.buy-input button.btn-primary {
+.buy-input .bottom-block {
 	position: absolute;
 	bottom: 3%;
+	width: 100%;
+}
+.buy-input button.btn-primary {
 	border-radius: 0;
 	width: 100%;
 }
@@ -71,6 +74,12 @@
 	margin-top: 6.5px;
 }
 
+.buy-form {
+    height: calc(100% - 200px);
+    overflow-y: auto;
+    margin-bottom: 10px;
+    width: 320px;
+}
 
 .buy-block .form-check {
 	float: right;
@@ -130,4 +139,42 @@
 .btn-up:focus {
     border: 1.4px solid rgba(0,123,255,.55);
     outline: none;
+}
+
+#table input[readonly] {
+	border: none;	
+    text-overflow: ellipsis;	
+    background-color: transparent;
+    font-size: 1.1rem;
+    padding-bottom: .5rem;
+}
+#table input[readonly]:focus {
+ 	outline: none;
+}
+
+#table .gname {
+    width: 200px;
+}
+
+#table .gprice {
+    text-align: right;
+    width: 100px;
+}
+
+#table .memo {
+	width: 300px;
+    margin-bottom: 10px;
+}
+
+.bottom-block table{
+	width: 300px;
+	font-size: 1.1rem;
+}
+
+.bottom-block td:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+.bottom-block td {
+    padding-bottom: 15px;
 }

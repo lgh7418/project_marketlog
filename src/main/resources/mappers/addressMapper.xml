@@ -8,8 +8,13 @@
 		values (#{member_no}, #{goods_address}, #{shipping})
 	</insert>
 	
-	<select id="getAddressNo" parameterType="String" resultType="Integer">
-		select address_no from address where goods_address = #{goods_address}
+	<resultMap id="addressNoMap" type="AddressVO">
+		<result property="address_no" column="address_no"/>
+		<result property="shipping" column="shipping"/>
+	</resultMap>
+	
+	<select id="getAddressNo" parameterType="String" resultMap="addressNoMap">
+		select address_no, shipping from address where goods_address = #{goods_address}
 	</select>
 	
 	<resultMap id="addressMap" type="AddressVO">

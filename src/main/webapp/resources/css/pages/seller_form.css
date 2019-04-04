@@ -5,8 +5,9 @@
 	margin: 10vh auto 0 auto; */
     display: flex;
     align-items: center;
-    padding-top: 72px;
+    padding-top: 80px;
     margin: 0 auto;
+    align-items: start;
 }
 
 .sell iframe {
@@ -45,6 +46,11 @@
     width: 20%;
 }
 
+.sell table td:first-child{
+    width: 39px;
+    text-align: center
+}
+
 .sell .table td {
     padding: 0;
 }
@@ -68,4 +74,25 @@
     background-color: transparent;
     border: 0;
     padding: .375rem .6rem;
+}
+
+button.delete-row {
+    border: none;
+    background: none;
+    color: orange;
+  	padding-top: 7px;	
+}
+
+button.delete-row:focus {
+    outline: none;
+}
+
+form#goods_form {
+    position: relative;
+    height: calc(97vh - 70px);
+}
+
+.charge {
+    position: absolute;
+    bottom: 3%;
 }

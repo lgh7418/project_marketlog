@@ -5,7 +5,7 @@
 <script>
 $(document).ready(function() {
 	$("#add-row").click(function() {
-		$("#product_table > tbody:first").append('<tr><td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button>'
+		$("#product_table > tbody:first").append('<tr><td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>'
 		+ '<td><input type="text" class="form-control gname" name="goods_name"></td>'
 		+ '<td><input type="text" class="form-control gprice" name="goods_price"></td></tr>');
 	});
@@ -33,7 +33,7 @@ $(document).ready(function() {
             <tbody>
             	<c:forEach var="item" items="${goodsList}">
                 <tr>
-                  <td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button>
+                  <td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>
                   <td><input type="text" class="form-control gname" name="goods_name" value="${item.goods_name}"></td>
                   <td><input type="text" class="form-control gprice" name="goods_price" value="${item.goods_price}"></td>
                 </tr>

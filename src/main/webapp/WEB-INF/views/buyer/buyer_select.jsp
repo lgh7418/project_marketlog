@@ -18,7 +18,7 @@
 					
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<c:forEach var="goods" items="${goodsList }">
-							<button type="button" class="dropdown-item">
+							<button type="button" class="dropdown-item item-click">
 								<span class="name">${goods.goods_name }</span>
 								<span class="price">${goods.goods_price }</span>
 							</button>
@@ -27,10 +27,12 @@
 				</div>
 				<!-- 전하실 말씀은 텍스트 버튼으로 만들어서 버튼 클릭하면 추가할 수 있도록 -->
 				<!-- <input type="hidden" class="form-control form-control-sm" placeholder="요청 사항"> -->
-				<form id="buy_form" action="${contextPath }/buyer/buyer_shipping" method="post">
-				<table id="table">
-				</table>
-				</form>
+				<div class="buy-form">
+					<form id="buy_form" action="${contextPath }/buyer/buyer_shipping" method="post">
+					<table id="table">
+					</table>
+					</form>
+				</div>
 				<div id="buy-block" style="display: none">
 				<div class="buy-block" >
 					<div class="amount-box">
@@ -48,7 +50,19 @@
 					</div>
 				</div>
 				</div>
-				<button type="button" class="btn btn-primary" onclick="formSubmit()">주문하기</button>
+				<div class="bottom-block">
+					<table>
+						<tr>
+							<td>배송비</td>
+							<td>${shipping } 원</td>
+						</tr>
+						<tr>
+							<td>합계</td>
+							<td id="sum">원</td>
+						</tr>
+					</table>
+					<button type="button" class="btn btn-primary" onclick="formSubmit()">주문하기</button>
+				</div>
 			</div>
 		</aside>
 	</div>
@@ -59,23 +73,30 @@
   		var input = event.currentTarget.parentElement.parentElement.firstElementChild;
   		var amount = parseInt(input.value);
   		input.value = amount + 1;
+  		total();
 	}
 	function down() {
   		var input = event.currentTarget.parentElement.parentElement.firstElementChild;
   		var amount = parseInt(input.value);
 		if(amount>1) {
 			input.value = amount - 1;
+			total();
 		}
 	}
 	// 옵션 버튼 이벤트
-	$(".dropdown-item").click(function() {
+	$(".item-click").click(function() {
 		var name = $(this).children('.name').text();
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
 		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
-		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly></td></tr>'
+		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'원" readonly></td></tr>'
 		+ '<tr><td>'+block.innerHTML+'</td></tr>'
-		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr>');
+		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr><td><hr></td></tr>');
+		total();
+		$(this).off();
+		$(this).on('click', function() {
+			alert('이미 선택한 옵션입니다.');
+		});
 	});
 
 	// 작동 안함
@@ -120,6 +141,19 @@
 		    elements[i].name = "list["+ i+"]."+elements[i].name;		    	
 		    }
 		}
+	}
+	
+	// 합계
+	function total() {
+		var sum = document.getElementById("sum");
+		var gprice = document.getElementsByClassName("gprice");
+		var amount = document.getElementsByClassName("amount");
+		var sumVal = 0;
+		for(var i=0; i<gprice.length; i++) {
+			sumVal += parseInt(gprice[i].value) * parseInt(amount[i].value);
+		}
+		sumVal += ${shipping};
+		sum.innerHTML = sumVal + " 원";
 	}
 </script>
 </body>
