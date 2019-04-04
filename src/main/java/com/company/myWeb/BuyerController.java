@@ -1,9 +1,11 @@
 package com.company.myWeb;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -49,17 +51,16 @@ public class BuyerController {
 	}
 	
 	@RequestMapping(value="/buyer_select", method=RequestMethod.POST)
-	public String getAddress(String goods_address, Model model, HttpSession session, HttpServletResponse res) throws Exception {
+	public String getAddress(String goods_address, Model model, HttpServletRequest req, HttpSession session) throws Exception {
 		//goods_address = CommonUtils.changeAddress(goods_address);
-		System.out.println(goods_address);
-		AddressVO addressVO = addressDAO.getAddressNo(goods_address);
-		System.out.println(addressVO);
+		if (session.getAttribute("member_no") == null) {
+			return "redirect:/member/login";
+		}
 		model.addAttribute("address", goods_address);
-		int address_no = addressVO.getAddress_no();
-		if(address_no != 0) {
+		Integer address_no = addressDAO.getAddressNo(goods_address);
+		if(address_no != null) {
 			List<GoodsVO> goodsList = goodsService.goodsList(address_no);
 			model.addAttribute("goodsList", goodsList);
-			model.addAttribute("shipping", addressVO.getShipping());
 			session.setAttribute("address_no", address_no);
 		}
 		return "buyer/buyer_select";
@@ -85,9 +86,11 @@ public class BuyerController {
 	
 	@RequestMapping(value="/buyer_result", method=RequestMethod.POST)
 	public void addOrderInfo(OrderInfoVO orderInfoVO, HttpSession session) throws Exception {
-		int member_no = (int) session.getAttribute("member_no");
+		Integer member_no = (Integer) session.getAttribute("member_no");
 		int address_no = (int) session.getAttribute("address_no");
-		orderService.addOrder(orderInfoVO, orderGoodsVO, member_no, address_no);
-		session.removeAttribute("address_no");
+		if(member_no != null) {
+			orderService.addOrder(orderInfoVO, orderGoodsVO, (int)member_no, address_no);
+			session.removeAttribute("address_no");
+		}
 	}
 }

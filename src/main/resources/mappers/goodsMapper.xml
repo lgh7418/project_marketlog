@@ -11,9 +11,12 @@
 	<resultMap type="GoodsVO" id="goodsMap">
 		<result property="goods_name" column="goods_name" />
 		<result property="goods_price" column="goods_price" />
+		<result property="shipping" column="shipping" />
 	</resultMap>
 	
 	<select id="selectGoods" resultMap="goodsMap">
-		select goods_name, goods_price from goods where address_no = #{address_no}
+		select goods_name, goods_price, shipping 
+		from goods as g join address as a 
+		on g.address_no=a.address_no where g.address_no=#{address_no}
 	</select>
 </mapper>

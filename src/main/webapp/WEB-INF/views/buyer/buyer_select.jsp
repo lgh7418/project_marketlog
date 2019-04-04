@@ -54,7 +54,7 @@
 					<table>
 						<tr>
 							<td>배송비</td>
-							<td>${shipping } 원</td>
+							<td>${goodsList[0].shipping } 원</td>
 						</tr>
 						<tr>
 							<td>합계</td>
@@ -89,7 +89,7 @@
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
 		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
-		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'원" readonly></td></tr>'
+		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly> 원</td></tr>'
 		+ '<tr><td>'+block.innerHTML+'</td></tr>'
 		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr><td><hr></td></tr>');
 		total();
@@ -152,7 +152,7 @@
 		for(var i=0; i<gprice.length; i++) {
 			sumVal += parseInt(gprice[i].value) * parseInt(amount[i].value);
 		}
-		sumVal += ${shipping};
+		sumVal += ${goodsList[0].shipping};
 		sum.innerHTML = sumVal + " 원";
 	}
 </script>

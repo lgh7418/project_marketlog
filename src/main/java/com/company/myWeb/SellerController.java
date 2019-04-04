@@ -36,9 +36,13 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value="/seller_form", method=RequestMethod.POST)
-	public void getAddress(String goods_address, Model model) throws Exception {
+	public String getAddress(String goods_address, Model model, HttpSession session) throws Exception {
+		if (session.getAttribute("member_no") == null) {
+			return "redirect:/member/login";
+		}
 		goods_address = CommonUtils.changeAddress(goods_address);
 		model.addAttribute("address", goods_address);
+		return "seller/seller_form";
 	}
 	
 	@RequestMapping(value="/seller_result", method=RequestMethod.POST)

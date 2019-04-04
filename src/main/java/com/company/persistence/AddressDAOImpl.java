@@ -1,5 +1,6 @@
 package com.company.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -21,7 +22,7 @@ public class AddressDAOImpl implements AddressDAO {
 	}
 
 	@Override
-	public AddressVO getAddressNo(String goods_address) throws Exception {
+	public Integer getAddressNo(String goods_address) throws Exception {
 		return sqlSession.selectOne(namespace + ".getAddressNo", goods_address);
 	}
 

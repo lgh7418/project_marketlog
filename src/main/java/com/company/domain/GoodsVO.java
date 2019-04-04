@@ -8,6 +8,7 @@ public class GoodsVO {
 	private String goods_name;
 	private String goods_price;
 	private int address_no;
+	private int shipping;
 
 	public String getGoods_name() {
 		return goods_name;
@@ -31,6 +32,12 @@ public class GoodsVO {
 	public String toString() {
 		return "GoodsVO [goods_name=" + goods_name + ", goods_price=" + goods_price + ", address_no=" + address_no
 				+ "]";
+	}
+	public int getShipping() {
+		return shipping;
+	}
+	public void setShipping(int shipping) {
+		this.shipping = shipping;
 	}
 	
 

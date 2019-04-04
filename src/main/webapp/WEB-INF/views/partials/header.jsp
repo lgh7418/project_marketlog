@@ -29,8 +29,8 @@
 			<ul class="navbar-nav ml-auto">
 				<c:choose>
 					<c:when test="${empty member_no}">
-						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/login">로그인</a>
-						</li>
+						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/login">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/join">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link" href="${contextPath}/member/logout">로그아웃</a></li>

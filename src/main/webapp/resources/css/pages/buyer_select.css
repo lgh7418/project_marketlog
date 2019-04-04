@@ -21,6 +21,17 @@
     padding-left: 7%;
 }
 
+span.name {
+    display: inline-block;
+    width: 160px;
+}
+
+span.price {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
+
 .buy-input {
 	padding-top: 40px;
 	width: 300px;
@@ -79,6 +90,10 @@
     overflow-y: auto;
     margin-bottom: 10px;
     width: 320px;
+}
+
+#buy_form {
+    width: 300px;
 }
 
 .buy-block .form-check {
@@ -158,7 +173,7 @@
 
 #table .gprice {
     text-align: right;
-    width: 100px;
+    width: 75px;
 }
 
 #table .memo {
