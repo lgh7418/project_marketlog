@@ -46,6 +46,7 @@
               </td>
             </tr>
           </table>
+          <input type="checkbox" Id="shippingCk" value="1" name="addInfo" checked> 배송지 저장
           <input type="submit" class="btn btn-primary" value="주문하기">
         </form>
         </div>
@@ -99,6 +100,13 @@
             }
           }).open();
         }
+        $("#shippingCk").click(function() {
+        	if($("#shippingCk").is(":checked")){
+        		$("#shippingCk").attr("name", "addInfo");
+        	}else {
+        		$("#shippingCk").removeAttr("name");
+        	}
+        })
       </script>
     </body>
   </html>

@@ -18,6 +18,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+<c:if test="${!empty msg}">
+	<script type="text/javascript"> 
+		var msg = '${msg}'; 
+		alert(msg); 
+		var state = '${state}'
+		if (state == 'login') {
+			location.href = "/member/login";
+		}else if(state== 'join'){
+			location.href = "/member/join";
+		}else {
+			history.go(-1);
+		}
+	</script>
+</c:if>
 </head>
 <body>
   <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

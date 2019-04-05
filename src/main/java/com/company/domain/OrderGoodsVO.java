@@ -55,4 +55,5 @@ public class OrderGoodsVO {
 				+ ", amount=" + amount + ", memo=" + memo + ", list=" + list + "]";
 	}
 
+
 }

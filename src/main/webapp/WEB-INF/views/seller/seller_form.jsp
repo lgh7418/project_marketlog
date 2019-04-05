@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../partials/header.jsp" %>
 
+
+
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -96,7 +98,6 @@ $(document).ready(function() {
   }
 	function deleteRow(obj){
 		var tr = $(obj).parents("tr");
-		console.log(tr);
 		tr.remove();
   	}
   </script>

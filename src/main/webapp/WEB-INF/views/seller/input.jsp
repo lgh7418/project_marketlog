@@ -2,7 +2,9 @@
 <%@include file="../partials/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-
+  <c:if test="${!empty msg }">
+  	${msg }
+  </c:if>
   <div class="content-block">
     <div class="seller">
       <p>판매하실 물건이 있는 페이지의 주소를 입력하세요.</p>
@@ -17,5 +19,6 @@
       </form>
     </div>
   </div>
+
 </body>
 </html>

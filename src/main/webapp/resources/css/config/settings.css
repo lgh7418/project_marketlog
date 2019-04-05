@@ -2,3 +2,16 @@
     font-size: 1.2rem;
     color: #4F86C6;
 }
+
+td,
+input {
+	text-overflow: ellipsis;
+}
+
+td input {
+ 	border: none;	
+}
+
+td input:focus {
+ 	outline: none;
+ }

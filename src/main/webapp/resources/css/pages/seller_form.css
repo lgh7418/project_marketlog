@@ -40,7 +40,7 @@
 
 .sell table th {
 	font-weight: bold;
-    padding-left: 5%;
+    padding: 9px 2%;
 }
 .sell table td:last-child{
     width: 20%;
@@ -63,7 +63,12 @@
 
 
 .product {
-	margin-bottom: 50px;
+    height: calc(100% - 160px);
+    overflow-y: auto;
+}
+
+.product thead {
+    background-color: rgba(0,0,0,0.2);
 }
 
 .sell .input-group {

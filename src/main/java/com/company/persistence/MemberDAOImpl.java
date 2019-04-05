@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.company.domain.MemberVO;
+import com.company.domain.OrderInfoVO;
 import com.company.dto.LoginDTO;
 
 @Repository
@@ -42,5 +43,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace + ".login", loginDTO);
 	}
 
+
+	@Override
+	public void updateInfo(OrderInfoVO orderInfoVO) throws Exception {
+		sqlSession.update(namespace+".updateInfo", orderInfoVO);
+	}
 
 }

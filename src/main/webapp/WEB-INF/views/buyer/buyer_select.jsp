@@ -84,12 +84,18 @@
 		}
 	}
 	// 옵션 버튼 이벤트
-	$(".item-click").click(function() {
+	$(".item-click").on('click', optionClick);
+	
+	function optionClick() {
 		var name = $(this).children('.name').text();
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
-		$("#table").append('<tr><td><input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
-		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly> 원</td></tr>'
+		$(this).attr('id', name);
+		$("#table").append('<tr><td><div class="delete"><button type="button" onclick="deleteRow(this)">x</button></div>'
+		+ '<div class="selected-goods">'
+		+ '<input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
+		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly> 원'
+		+ '</div></td></tr>'
 		+ '<tr><td>'+block.innerHTML+'</td></tr>'
 		+ '<tr style="display:none"><td><input type="text" class="memo"></td></tr><td><hr></td></tr>');
 		total();
@@ -97,12 +103,8 @@
 		$(this).on('click', function() {
 			alert('이미 선택한 옵션입니다.');
 		});
-	});
+	}
 
-	// 작동 안함
-	$('.dropdown-menu').click(function(e) {
-	    e.stopPropagation();
-	});
 	// 체크박스 체크 이벤트
 	$("#table").delegate('.form-check-input','click', function(){
 		var $tr = $(this).parents("tr").next();
@@ -116,7 +118,6 @@
 		}
 	});
 	
-
 	// submit 
 	function formSubmit() {
 		var gname = document.getElementsByClassName("gname");
@@ -152,9 +153,29 @@
 		for(var i=0; i<gprice.length; i++) {
 			sumVal += parseInt(gprice[i].value) * parseInt(amount[i].value);
 		}
-		sumVal += ${goodsList[0].shipping};
+		if(sumVal != 0) {
+			sumVal += ${goodsList[0].shipping};
+		}else {
+			sumVal = "";
+		}
 		sum.innerHTML = sumVal + " 원";
 	}
+	// 선택한 상품 제거
+	function deleteRow(obj){
+		var idVal = $(obj).parent().next().children('.gname').val();
+		var id = document.getElementById(idVal);
+		$(id).off();
+		$(id).on('click', optionClick);
+		var tr = $(obj).parents("tr");
+		var tr1 = tr.next();
+		var tr2 = tr1.next();
+		var tr3 = tr2.next();
+		tr.remove();
+		tr1.remove();
+		tr2.remove();
+		tr3.remove();
+		total();
+  	}
 </script>
 </body>
 </html>

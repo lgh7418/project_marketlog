@@ -19,6 +19,7 @@ public class OrderInfoVO {
 	private Timestamp order_time;
 	private int shipping;
 	private int order_status;
+	private int addInfo;
 	private List<OrderGoodsVO> list;
 	
 	
@@ -119,5 +120,10 @@ public class OrderInfoVO {
 	public void setOrder_status(int order_status) {
 		this.order_status = order_status;
 	}
-
+	public int getAddInfo() {
+		return addInfo;
+	}
+	public void setAddInfo(int addInfo) {
+		this.addInfo = addInfo;
+	}
 }

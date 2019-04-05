@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <style>
-    	td input {
-    		border: none;	
 
-    	}
-    	td input:focus {
-    		outline: none;
-    	}
+    	.buy-goods td:nth-child(4) {
+		    width: 68px;
+		    text-align: center;
+		}
+		.buy-goods th:nth-child(2) {
+		    width: 40%;
+		}
     </style>
     <p class="font-navy"><b>주문 내역</b></p>
+   	<c:if test="${empty orderInfoList}">
+	주문 내역이 없습니다.
+	</c:if>
     <c:forEach var="item" items="${orderInfoList }">
     <p><fmt:formatDate value="${item.order_time }" pattern="yyyy.MM.dd"/></p>
-    <table class="table table-sm">
+    <table class="table table-sm buy-goods">
       <thead>
         <tr class="th">
           <th></th>
@@ -31,17 +35,25 @@
           <td>${goods.goods_price }</td>
           <td>${goods.amount }</td>
           <td>${goods.memo }</td>
-          <td>주문 완료</td>
+          <td>
+          <c:choose>
+         	 <c:when test="${item.order_status == 0 }">
+          	주문완료
+	      	</c:when>
+     		 <c:when test="${item.order_status == 1 }">
+	      	발송완료
+	      	</c:when>
+	      </c:choose>
+          </td>
         </tr>
         </c:forEach>
       </tbody>
     </table>
    <form action="${contextPath }/mypage/modifyShipping" method="post">
-   <table class="table table-sm">
+   <table class="table table-sm shipping-table">
       <thead>
         <tr class="th">
-          <th></th>
-          <th>배송 정보</th>
+          <th colspan="2">배송 정보</th>
         </tr>
       </thead>
       <tbody>
@@ -51,9 +63,9 @@
         </tr>
         <tr>
 		  <th>연락처</th>
-          <td><input type="text" name="phone1" value="0${item.phone1 }" size="1" readonly>-
-          	<input type="text" name="phone2" value="${item.phone2 }" size="2" readonly>-
-          	<input type="text" name="phone3" value="${item.phone3 }" size="2" readonly></td>
+          <td><input type="tel" name="phone1" value="0${item.phone1 }" size="1" readonly>-
+          	<input type="tel" name="phone2" value="${item.phone2 }" size="2" readonly>-
+          	<input type="tel" name="phone3" value="${item.phone3 }" size="2" readonly></td>
         </tr>
         <tr>
 		  <th>배송지</th>
@@ -73,7 +85,3 @@
 	    <input type="submit" value="배송정보 수정">
     </form>
     </c:forEach>
-    
-<script>
-$(input).attr('size', $(input).val().length);
-</script>

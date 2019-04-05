@@ -1,5 +1,8 @@
 package com.company.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AddressVO {
 	private int address_no;
 	private int member_no;

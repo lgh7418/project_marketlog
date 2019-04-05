@@ -20,6 +20,7 @@ public class CommonUtils {
 	
 	// pc버전 주소를 모바일 버전으로 변경
 	public static String changeAddress(String address) {
+		address = address.trim();
 		if (address.indexOf("://m.") == -1) {
 			if (address.indexOf("https://") != -1) {
 				address = address.substring(8);
@@ -29,6 +30,9 @@ public class CommonUtils {
 				address = address.substring(9);
 				address = "https://m." + address;
 			}
+		}
+		if (address.startsWith("m.")) {
+			address = "https://" + address;
 		}
 		return address;
 	}

@@ -29,6 +29,7 @@
 		<result property="phone3" column="phone3"	/>
 		<result property="memo" column="memo"	/>
 		<result property="order_time" column="order_time"	/>
+		<result property="order_status" column="order_status" />
 	</resultMap>
 	
 	<select id="selectOrderInfo" resultMap="orderInfoMap">

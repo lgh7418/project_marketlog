@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.company.domain.MemberVO;
+import com.company.domain.OrderInfoVO;
 import com.company.dto.LoginDTO;
 import com.company.persistence.MemberDAO;
 
@@ -36,5 +37,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(LoginDTO loginDTO) throws Exception {
 		return memberDAO.login(loginDTO);
+	}
+
+	@Override
+	public void updateInfo(OrderInfoVO orderInfoVO, int member_no) throws Exception {
+		orderInfoVO.setMember_no(member_no);
+		memberDAO.updateInfo(orderInfoVO);
 	}
 }

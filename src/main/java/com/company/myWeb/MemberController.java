@@ -53,13 +53,12 @@ public class MemberController {
 	public void joinPOST(@ModelAttribute("memberVO") MemberVO memberVO,
 			HttpServletRequest request,
 			HttpServletResponse response, Model model) throws Exception {
-		String contextPath = request.getContextPath();
 		String email_id = memberVO.getEmail_id();
 		String result = memberService.overlapped(email_id);
 		if(result != null) {
 			String msg = "이미 가입된 이메일입니다.";
-			model.addAttribute("msg", msg);		// 이거 안먹음..ㅠㅠ
-			response.sendRedirect(contextPath + "/member/join");
+			model.addAttribute("msg", msg);
+			model.addAttribute("state", "join");
 		}else {
 			memberService.addMember(memberVO);
 			response.sendRedirect(request.getContextPath() + "/main/home");

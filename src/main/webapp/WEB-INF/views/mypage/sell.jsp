@@ -33,7 +33,6 @@
 	          <th>상품 가격</th>
 	          <th>수량</th>
 	          <th>전달 사항</th>
-	          <th>주문 상태</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -43,16 +42,14 @@
 	          <td>${goods.goods_price }</td>
 	          <td>${goods.amount }</td>
 	          <td>${goods.memo }</td>
-	          <td>주문 완료</td>
 	        </tr>
 	        </c:forEach>
 	      </tbody>
 	    </table>
-      	<table class="table table-sm">
+      	<table class="table table-sm shipping-table">
 	      <thead>
 	        <tr class="th">
-	          <th></th>
-	          <th>배송 정보</th>
+	          <th colspan="2">배송 정보</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -62,9 +59,9 @@
 	        </tr>
 	        <tr>
 			  <th>연락처</th>
-	          <td><input type="text" name="phone1" value="0${item.phone1 }" size="1" readonly>-
-	          	<input type="text" name="phone2" value="${item.phone2 }" size="2" readonly>-
-	          	<input type="text" name="phone3" value="${item.phone3 }" size="2" readonly></td>
+	          <td><input type="tel" name="phone1" value="0${item.phone1 }" size="1" readonly>-
+	          	<input type="tel" name="phone2" value="${item.phone2 }" size="2" readonly>-
+	          	<input type="tel" name="phone3" value="${item.phone3 }" size="2" readonly></td>
 	        </tr>
 	        <tr>
 			  <th>배송지</th>
@@ -122,11 +119,10 @@
 	        </c:forEach>
 	      </tbody>
 	    </table>
-      	<table class="table table-sm">
+      	<table class="table table-sm shipping-table">
 	      <thead>
 	        <tr class="th">
-	          <th></th>
-	          <th>배송 정보</th>
+	          <th colspan="2">배송 정보</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -136,9 +132,9 @@
 	        </tr>
 	        <tr>
 			  <th>연락처</th>
-	          <td><input type="text" name="phone1" value="0${item.phone1 }" size="1" readonly>-
-	          	<input type="text" name="phone2" value="${item.phone2 }" size="2" readonly>-
-	          	<input type="text" name="phone3" value="${item.phone3 }" size="2" readonly></td>
+	          <td><input type="tel" name="phone1" value="0${item.phone1 }" size="1" readonly>-
+	          	<input type="tel" name="phone2" value="${item.phone2 }" size="2" readonly>-
+	          	<input type="tel" name="phone3" value="${item.phone3 }" size="2" readonly></td>
 	        </tr>
 	        <tr>
 			  <th>배송지</th>

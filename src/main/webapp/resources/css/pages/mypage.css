@@ -16,6 +16,10 @@
 	position: fixed;
 }
 
+.mypage-nav div#v-pills-tab {
+    margin-top: 10px;
+}
+
 .mypage-main {
     width: 100%;
    	margin-left: 22vw;
@@ -34,4 +38,20 @@
 input#collapse {
     margin-left: 30px;
     margin-right: 1px;
+}
+
+.shipping-table tbody th {
+	width: 120px;
+}
+
+.shipping-table td input[type="text"] {
+	width: 40vw;
+}
+
+.card:last-child {
+	margin-bottm: 2rem;
+}
+
+div#v-pills-home {
+    margin-bottom: 2rem;
 }

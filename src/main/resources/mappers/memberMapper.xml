@@ -26,4 +26,12 @@
 	<select id="selectOverlappedID" parameterType="String" resultType="String">
 		select * from member where email_id = #{id}
 	</select>
+	
+	<!-- 배송지 저장 -->
+	<update id="updateInfo">
+		update member 
+		set postcode=#{postcode}, address=#{address}, detail_address=#{detail_address},
+		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3}
+		where member_no = #{member_no}
+	</update>
 </mapper>

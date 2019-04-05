@@ -38,9 +38,15 @@ public class SellerController {
 	@RequestMapping(value="/seller_form", method=RequestMethod.POST)
 	public String getAddress(String goods_address, Model model, HttpSession session) throws Exception {
 		if (session.getAttribute("member_no") == null) {
-			return "redirect:/member/login";
+			model.addAttribute("msg", "로그인하셔야합니다.");
+			model.addAttribute("state", "login");
 		}
 		goods_address = CommonUtils.changeAddress(goods_address);
+		Integer address_no = addressDAO.getAddressNo(goods_address);
+		if(address_no != null) {
+			String msg = "존재하는 페이지입니다.";
+			model.addAttribute("msg", msg);
+		}
 		model.addAttribute("address", goods_address);
 		return "seller/seller_form";
 	}
@@ -51,7 +57,6 @@ public class SellerController {
 		addressDAO.insertAddress(addressVO);
 		
 		// 상품 추가
-		System.out.println(goodsDTO);
 		goodsService.addGoods(goodsDTO, addressVO);
 		
 	}

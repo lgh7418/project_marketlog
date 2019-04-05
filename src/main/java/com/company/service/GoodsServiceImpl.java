@@ -25,6 +25,7 @@ public class GoodsServiceImpl implements GoodsService {
 	public void addGoods(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
 		Integer address_no = addressDAO.getAddressNo(addressVO.getGoods_address());
 		List<GoodsDTO> goodsList = goodsDTO.getList();
+		int i = 1;
 		for (GoodsDTO goods : goodsList) {
 			String name = goods.getGoods_name();
 			if(CommonUtils.isEmpty(name)) {
@@ -34,6 +35,8 @@ public class GoodsServiceImpl implements GoodsService {
 			goodsVO.setGoods_name(name);
 			goodsVO.setGoods_price(goods.getGoods_price());
 			goodsVO.setAddress_no(address_no);
+			goodsVO.setGoods_no(i);
+			i++;
 			goodsDAO.insertGoods(goodsVO);			
 		}
 	}

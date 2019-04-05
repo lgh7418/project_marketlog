@@ -2,12 +2,9 @@
 	background-color: #f2e9e1;
 	/* background-color: #f6f9fc; */
 	height: 100vh;
+    overflow: auto;
 }
 
-.content-block-100 {
-	background-color: #f2e9e1;
-	height: 100%;
-}
 
 .seller p {
 	text-align: center;

@@ -5,11 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 public class GoodsVO {
+	private int goods_no;
 	private String goods_name;
 	private String goods_price;
 	private int address_no;
 	private int shipping;
-
+	
+	public int getGoods_no() {
+		return goods_no;
+	}
+	public void setGoods_no(int goods_no) {
+		this.goods_no = goods_no;
+	}
 	public String getGoods_name() {
 		return goods_name;
 	}
@@ -39,6 +46,7 @@ public class GoodsVO {
 	public void setShipping(int shipping) {
 		this.shipping = shipping;
 	}
+
 	
 
 }

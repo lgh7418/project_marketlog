@@ -26,6 +26,7 @@ import com.company.domain.OrderGoodsVO;
 import com.company.domain.OrderInfoVO;
 import com.company.persistence.AddressDAO;
 import com.company.service.GoodsService;
+import com.company.service.MemberService;
 import com.company.service.OrderService;
 
 @Controller
@@ -43,6 +44,9 @@ public class BuyerController {
 	@Inject
 	private OrderGoodsVO orderGoodsVO;
 	
+	@Inject
+	private MemberService memberService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(BuyerController.class);
 	
 	@RequestMapping(value="/*", method=RequestMethod.GET )
@@ -52,9 +56,10 @@ public class BuyerController {
 	
 	@RequestMapping(value="/buyer_select", method=RequestMethod.POST)
 	public String getAddress(String goods_address, Model model, HttpServletRequest req, HttpSession session) throws Exception {
-		//goods_address = CommonUtils.changeAddress(goods_address);
+		goods_address = CommonUtils.changeAddress(goods_address);
 		if (session.getAttribute("member_no") == null) {
-			return "redirect:/member/login";
+			model.addAttribute("msg", "로그인하셔야합니다.");
+			model.addAttribute("state", "login");
 		}
 		model.addAttribute("address", goods_address);
 		Integer address_no = addressDAO.getAddressNo(goods_address);
@@ -90,6 +95,9 @@ public class BuyerController {
 		int address_no = (int) session.getAttribute("address_no");
 		if(member_no != null) {
 			orderService.addOrder(orderInfoVO, orderGoodsVO, (int)member_no, address_no);
+			if(orderInfoVO.getAddInfo() == 1) {
+				memberService.updateInfo(orderInfoVO, (int)member_no);
+			}
 			session.removeAttribute("address_no");
 		}
 	}
