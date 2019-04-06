@@ -15,4 +15,5 @@ public interface OrderDAO {
 	public void updateOrderInfo(OrderInfoVO orderInfoVO) throws Exception;
 	public List<OrderInfoVO> selectSellerOrderInfo(Map<String, Integer> selector) throws Exception;
 	public void updateOrderStatus(Map<String, Integer> selector)throws Exception;
+	public void deleteOrder(String goods_name) throws Exception;
 }

@@ -1,3 +1,41 @@
 table .sm {
 	width: 40px;
 }
+
+.btn-link.collapsed {
+    color: black;
+}
+
+.card:last-child {
+    margin-bottom: 20px;
+}
+
+.open {
+    margin-bottom: 5px;
+}
+
+li div {
+	display: inline-block;
+	margin-top: 5px;
+    margin-bottom: 14px;
+}
+li img {
+    margin-left: 10px;
+    padding-bottom: 8px;
+}
+
+.sell-goods td:nth-child(2) {
+    text-align: right;
+    padding-right: 60px;
+}
+
+.sell-goods th:nth-child(2) {
+    text-align: right;
+    padding-right: 50px;
+}
+
+.sell-goods th:nth-child(3),
+.sell-goods td:nth-child(3)
+ {
+    text-align: center;
+}

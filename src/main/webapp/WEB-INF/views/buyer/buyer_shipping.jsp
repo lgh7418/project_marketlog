@@ -7,14 +7,14 @@
           <table>
             <tr>
               <th>받으시는분</th>
-              <td><input type="text" name="recipient" class="form-control" /></td>
+              <td><input type="text" name="recipient" class="form-control" placeholder="성함"></td>
             </tr>
             <tr>
               <th>주소</th>
               <td>
                 <div class="form-inline">
                   <div class="form-group mb-2">
-                    <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호"/>
+                    <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호">
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
                     <input type="button" onclick="execDaumPostcode()" value="주소 찾기">
@@ -35,18 +35,20 @@
                   <option value="018">018</option>
                   <option value="019">019</option>
                 </select>
-                - <input type="text" name="phone2" /> -
-                <input type="text" name="phone3" />
+                - <input type="tel" name="phone2" maxlength="4"> -
+                <input type="tel" name="phone3" maxlength="4">
               </td>
             </tr>
             <tr>
               <th>배송시요구사항</th>
               <td>
-                <input type="text" name="memo" class="form-control" />
+                <input type="text" name="memo" class="form-control">
               </td>
             </tr>
           </table>
-          <input type="checkbox" Id="shippingCk" value="1" name="addInfo" checked> 배송지 저장
+          <input type="hidden" name="total_price" value="${total_price }">
+          <input type="checkbox" Id="shippingCk" value="1" name="addInfo" checked>
+           기본 배송지로 설정
           <input type="submit" class="btn btn-primary" value="주문하기">
         </form>
         </div>

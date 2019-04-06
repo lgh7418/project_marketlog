@@ -1,6 +1,9 @@
+
 .font-navy {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #4F86C6;
+   	font-family: 'Nanum Gothic', sans-serif;
+    letter-spacing: 1px;
 }
 
 td,
@@ -8,10 +11,26 @@ input {
 	text-overflow: ellipsis;
 }
 
-td input {
+td input[type="text"] {
  	border: none;	
 }
 
 td input:focus {
  	outline: none;
  }
+
+.shipping-form td input,
+.join-form td input,
+.memo {
+    border: 1px solid #ced4da;
+}
+ 
+input[type="tel"] {
+    width: 50px;
+    height: 25.2px;
+}
+
+
+.flex {
+	display: flex;
+}

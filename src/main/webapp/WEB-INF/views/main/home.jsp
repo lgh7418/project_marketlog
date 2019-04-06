@@ -3,9 +3,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%@include file="../partials/header.jsp" %>
+<style>
+.logo-top {
+	font-family: 'Handlee', cursive;
+    font-size: 150px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
+.logo-top span {
+    color: #e78200;
+}
+.logo-bottom {
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 15px;
+    font-size: 24px;
+    font-weight: 100;
+}
+</style>
     <div class="home">
         <div class="container">
-            <h1 class="logo">편리한 주문, MarketLog</h1>
+        	<div class="logo">
+            <h1 class="logo-top"><span>M</span>arket<span>L</span>og</h1>
+            <h4 class="logo-bottom">편리한 SNS마켓 주문 관리</h4>
+            </div>
 		<c:choose>
 			<c:when test="${empty member_no}">
 		        <div class="select-btn">

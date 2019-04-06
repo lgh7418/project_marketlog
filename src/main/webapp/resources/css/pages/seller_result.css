@@ -7,9 +7,15 @@
 
 .seller_result p {
     margin: 40vh auto 35px auto;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .seller_result  div{
     margin: 0 auto;
+    color: #88715d;
+    font-size: 1.1rem;
+}
+
+.seller_result #p:visited {
+	color: #88715d;
 }

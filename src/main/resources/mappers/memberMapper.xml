@@ -14,7 +14,6 @@
 		<result property="email_id" column="email_id" />
 		<result property="member_pw" column="member_pw" />
 		<result property="member_name" column="member_name" />
-		<result property="joinDate" column="joinDate" />
 	</resultMap>
 	
 	<!-- 로그인 맵퍼 -->
@@ -27,11 +26,27 @@
 		select * from member where email_id = #{id}
 	</select>
 	
-	<!-- 배송지 저장 -->
+	<!-- 배송지 저장, 회원 정보 수정 -->
 	<update id="updateInfo">
 		update member 
 		set postcode=#{postcode}, address=#{address}, detail_address=#{detail_address},
 		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3}
 		where member_no = #{member_no}
 	</update>
+	
+	<resultMap type="MemberVO" id="memberInfoMap">
+		<result property="email_id" column="email_id" />
+		<result property="member_name" column="member_name" />
+		<result property="postcode" column="postcode"	/>
+		<result property="address" column="address"	/>
+		<result property="detail_address" column="detail_address"	/>
+		<result property="phone1" column="phone1"	/>
+		<result property="phone2" column="phone2"	/>
+		<result property="phone3" column="phone3"	/>
+	</resultMap>
+	
+	<select id="selectMemberInfo" resultMap="memberInfoMap">
+		select * from member where member_no = #{member_no}
+	</select>
+	
 </mapper>

@@ -3,3 +3,30 @@
     padding-top: 25vh;
     margin: 0 auto;
 }
+
+.shipping-form td {
+    padding: 8px;
+}
+
+.shipping-form #address {
+    margin-bottom: 8px;
+}
+
+.shipping-form tr {
+    border-bottom: 1.5px solid #ccc;
+}
+
+.shipping-form input.btn {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.shipping-form table {
+    margin-bottom: 10px;
+}
+
+.shipping-form.info {
+    padding-top: 20px;
+    margin-left: 10vw;
+}
+

@@ -81,4 +81,12 @@ public class OrderServiceImpl implements OrderService {
 		orderDAO.updateOrderStatus(selector);
 	}
 
+	@Override
+	public void deleteOrder(OrderGoodsVO goods_name) throws Exception {
+		for(OrderGoodsVO name: goods_name.getList()) {
+			orderDAO.deleteOrder(name.getGoods_name());
+			
+		}
+	}
+
 }

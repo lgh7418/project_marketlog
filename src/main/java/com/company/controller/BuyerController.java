@@ -1,4 +1,4 @@
-package com.company.myWeb;
+package com.company.controller;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -85,8 +85,9 @@ public class BuyerController {
 	
 	
 	@RequestMapping(value="/buyer_shipping", method=RequestMethod.POST)
-	public void addOderGoods(OrderGoodsVO vo) throws Exception {
+	public void addOderGoods(OrderGoodsVO vo, int total_price, Model model) throws Exception {
 		orderGoodsVO = vo;
+		model.addAttribute("total_price", total_price);
 	}
 	
 	@RequestMapping(value="/buyer_result", method=RequestMethod.POST)

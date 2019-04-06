@@ -19,4 +19,8 @@
 		from goods as g join address as a 
 		on g.address_no=a.address_no where g.address_no=#{address_no} order by goods_no;
 	</select>
+	
+	<delete id="deleteGoods">
+		delete from goods where address_no=#{address_no}
+	</delete>
 </mapper>

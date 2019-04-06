@@ -31,6 +31,7 @@
 					<form id="buy_form" action="${contextPath }/buyer/buyer_shipping" method="post">
 					<table id="table">
 					</table>
+					<input type="hidden" name="total_price" id="total">
 					</form>
 				</div>
 				<div id="buy-block" style="display: none">
@@ -91,7 +92,7 @@
 		var price = $(this).children('.price').text();
 		var block = document.querySelector("#buy-block");
 		$(this).attr('id', name);
-		$("#table").append('<tr><td><div class="delete"><button type="button" onclick="deleteRow(this)">x</button></div>'
+		$("#table").append('<tr><td><div class="delete"><button type="button" onclick="deleteRow(this)"><i class="fas fa-times"></i></button></div>'
 		+ '<div class="selected-goods">'
 		+ '<input type="text" name="goods_name" class="gname" value="'+name+'" readonly>'
 		+ '<input type="text" name="goods_price" class="gprice" value="'+price+'" readonly> 원'
@@ -159,6 +160,7 @@
 			sumVal = "";
 		}
 		sum.innerHTML = sumVal + " 원";
+		$('#total').val(sumVal);
 	}
 	// 선택한 상품 제거
 	function deleteRow(obj){

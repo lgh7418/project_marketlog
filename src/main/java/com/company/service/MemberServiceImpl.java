@@ -1,7 +1,5 @@
 package com.company.service;
 
-import java.util.Map;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -18,11 +16,6 @@ import com.company.persistence.MemberDAO;
 public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberDAO memberDAO;
-	
-/*	@Override
-	public MemberVO login(Map loginMap) throws Exception {
-		return memberDAO.login(loginMap);
-	}*/
 
 	@Override
 	public void addMember(MemberVO memberVO) throws Exception {
@@ -44,4 +37,17 @@ public class MemberServiceImpl implements MemberService {
 		orderInfoVO.setMember_no(member_no);
 		memberDAO.updateInfo(orderInfoVO);
 	}
+	
+	@Override
+	public void updateInfo(MemberVO memberVO, int member_no) throws Exception {
+		memberVO.setMember_no(member_no);
+		memberDAO.updateInfo(memberVO);
+	}
+
+	@Override
+	public MemberVO selectMemberInfo(int member_no) throws Exception {
+		return memberDAO.selectMemberInfo(member_no);
+	}
+
+
 }

@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.tester;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

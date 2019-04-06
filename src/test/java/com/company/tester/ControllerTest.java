@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.tester;
 
 import javax.inject.Inject;
 

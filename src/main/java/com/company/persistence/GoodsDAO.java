@@ -8,4 +8,5 @@ import com.company.dto.GoodsDTO;
 public interface GoodsDAO {
 	public void insertGoods(GoodsVO goodsVO) throws Exception;
 	public List<GoodsVO> selectGoods(Integer address_no) throws Exception;
+	public void deleteGoods(int address_no) throws Exception;
 }

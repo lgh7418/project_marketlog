@@ -1,6 +1,7 @@
 package com.company.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.domain.OrderGoodsVO;
 import com.company.domain.OrderInfoVO;
@@ -12,4 +13,5 @@ public interface OrderService {
 	public void updateOrderInfo(OrderInfoVO orderInfoVO) throws Exception;
 	public List<OrderInfoVO> getSellerOrderInfo(int member_no, int order_status) throws Exception;
 	public void updateOrderStatus(int order_no, int order_status) throws Exception;
+	public void deleteOrder(OrderGoodsVO goods_name) throws Exception;
 }

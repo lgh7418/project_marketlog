@@ -1,11 +1,3 @@
-
-
-/* @media (max-width:767.98px) {
-	.nav-menu {
-		display: none;
-	}
-} */
-
 .nav-menu {
     padding: 70px 15px;
     height: 100vh;
@@ -14,6 +6,7 @@
 	width:20vw;
 	max-width: 300px;
 	position: fixed;
+	font-size: 17px;
 }
 
 .mypage-nav div#v-pills-tab {
@@ -22,17 +15,19 @@
 
 .mypage-main {
     width: 100%;
-   	margin-left: 22vw;
+   	margin-left: 25vw;
     margin-right: 4%;
 }
+
+@media (min-width:1500px) {
+	.mypage-main{
+		margin-left: 380px;
+	}
+} 
+
 .tab-content {
 	padding-top: 78px;
-	margin: 0 auto;
 	max-width: 1000px;
-}
-
-.mypage-main p {
-	margin-top: 2rem; 
 }
 
 input#collapse {
@@ -40,18 +35,19 @@ input#collapse {
     margin-right: 1px;
 }
 
-.shipping-table tbody th {
-	width: 120px;
-}
-
-.shipping-table td input[type="text"] {
-	width: 40vw;
-}
-
-.card:last-child {
-	margin-bottm: 2rem;
-}
-
 div#v-pills-home {
     margin-bottom: 2rem;
+}
+
+.mypage-main p {
+    margin-top: 2rem;
+}
+
+.mypage-main a[target="blank"] {
+    color: black;
+}
+
+.mypage-main .info p {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }

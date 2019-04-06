@@ -1,4 +1,4 @@
-package com.company.myWeb;
+package com.company.controller;
 
 import java.io.PrintWriter;
 

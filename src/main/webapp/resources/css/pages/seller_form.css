@@ -34,13 +34,15 @@
     font-size: 1.2rem;
 }
 
-.sell table {
+.sell table tbody{
     background-color: #fff;
 }
 
 .sell table th {
 	font-weight: bold;
-    padding: 9px 2%;
+    padding: 6px 2%;
+    text-align: center;
+    letter-spacing: 3px;
 }
 .sell table td:last-child{
     width: 20%;
@@ -59,16 +61,22 @@
     border-radius: 0;
     border-color: transparent;
     background-color: transparent;
+    height: 34px;
 }
 
+.sell tfoot {
+    background-color: white;
+}
 
 .product {
     height: calc(100% - 160px);
     overflow-y: auto;
+    margin-botton: 10%;
+    padding-top: 30px;
 }
 
 .product thead {
-    background-color: rgba(0,0,0,0.2);
+    background-color: #e6e9ec;
 }
 
 .sell .input-group {
@@ -84,8 +92,8 @@
 button.delete-row {
     border: none;
     background: none;
-    color: orange;
-  	padding-top: 7px;	
+  	padding-top: 5px;
+  	padding-bottom: 5px;
 }
 
 button.delete-row:focus {
@@ -93,11 +101,19 @@ button.delete-row:focus {
 }
 
 form#goods_form {
-    position: relative;
     height: calc(97vh - 70px);
 }
 
 .charge {
-    position: absolute;
-    bottom: 3%;
+    width: 100%;
+}
+
+.charge-box1 {
+    float: left;
+    padding-top: 20px;
+}
+
+.charge-box2 {
+	float: right;
+	margin-top: 64.5px;
 }

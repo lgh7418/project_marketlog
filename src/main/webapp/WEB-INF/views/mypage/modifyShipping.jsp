@@ -33,9 +33,16 @@ input[type="text"] {
             <tr>
               <th>휴대전화</th>
               <td>
-                <input type="text" name="phone1" value="0${orderInfo.phone1 }" size="2"> -
-                <input type="text" name="phone2" value="${orderInfo.phone2 }" size="2"> -
-                <input type="text" name="phone3" value="${orderInfo.phone3 }" size="2">
+                 <select name="phone1">
+		            <option value="010">010</option>
+		            <option value="011">011</option>
+		            <option value="016">016</option>
+		            <option value="017">017</option>
+		            <option value="018">018</option>
+		            <option value="019">019</option>
+		         </select> 
+                - <input type="tel" name="phone2" value="${orderInfo.phone2 }" size="2">
+                - <input type="tel" name="phone3" value="${orderInfo.phone3 }" size="2">
               </td>
             </tr>
             <tr>
@@ -46,7 +53,7 @@ input[type="text"] {
             </tr>
           </table>
           <input type="hidden" name="order_no" value="${orderInfo.order_no }">
-          <input type="submit" class="btn btn-primary" value="수정하기">
+          <input type="submit" class="btn btn-info" value="수정하기">
         </form>
         </div>
      </div>
@@ -99,6 +106,7 @@ input[type="text"] {
             }
           }).open();
         }
+        $("option:contains('${member.phone1 }')").prop('selected', 'selected');
       </script>
     </body>
   </html>

@@ -22,7 +22,7 @@ public class GoodsServiceImpl implements GoodsService {
 	private AddressDAO addressDAO;
 	
 	@Override
-	public void addGoods(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
+	public int addGoods(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
 		Integer address_no = addressDAO.getAddressNo(addressVO.getGoods_address());
 		List<GoodsDTO> goodsList = goodsDTO.getList();
 		int i = 1;
@@ -39,6 +39,7 @@ public class GoodsServiceImpl implements GoodsService {
 			i++;
 			goodsDAO.insertGoods(goodsVO);			
 		}
+		return address_no;
 	}
 
 	@Override
@@ -46,4 +47,23 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsDAO.selectGoods(address_no);
 	}
 
+	@Override
+	public void updateGoods(GoodsDTO goodsDTO, int address_no) throws Exception {
+		goodsDAO.deleteGoods(address_no);
+		List<GoodsDTO> goodsList = goodsDTO.getList();
+		int i = 1;
+		for (GoodsDTO goods : goodsList) {
+			String name = goods.getGoods_name();
+			if(CommonUtils.isEmpty(name)) {
+				continue;
+			}
+			GoodsVO goodsVO = new GoodsVO();
+			goodsVO.setGoods_name(name);
+			goodsVO.setGoods_price(goods.getGoods_price());
+			goodsVO.setAddress_no(address_no);
+			goodsVO.setGoods_no(i);
+			i++;
+			goodsDAO.insertGoods(goodsVO);			
+		}
+	}
 }

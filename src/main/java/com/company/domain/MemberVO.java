@@ -1,6 +1,5 @@
 package com.company.domain;
 
-//@Component("memberVO")
 public class MemberVO {
 	private int member_no;
 	private String email_id;

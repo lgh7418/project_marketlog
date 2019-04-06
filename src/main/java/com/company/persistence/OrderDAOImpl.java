@@ -1,6 +1,5 @@
 package com.company.persistence;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +51,11 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public void updateOrderStatus(Map<String, Integer> selector) throws Exception {
 		sqlSession.update(namespace+".updateOrderStatus", selector);
+	}
+
+	@Override
+	public void deleteOrder(String goods_name) throws Exception {
+		sqlSession.delete(namespace+".deleteOrder", goods_name);
 	}
 
 }

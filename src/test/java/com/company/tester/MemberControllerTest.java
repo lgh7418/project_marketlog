@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.tester;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.company.myWeb.MemberController;
+import com.company.controller.MemberController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"test-config.xml"})

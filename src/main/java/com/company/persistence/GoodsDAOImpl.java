@@ -27,4 +27,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return sqlSession.selectList(namespace + ".selectGoods", address_no);
 	}
 
+	@Override
+	public void deleteGoods(int address_no) throws Exception {
+		sqlSession.delete(namespace+".deleteGoods", address_no);
+		
+	}
 }

@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.orderMapper">
 	<insert id="insertOrderInfo">
-		insert into order_info (member_no, address_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo)
-		values (#{member_no}, #{address_no}, #{recipient}, #{postcode}, #{address}, #{detail_address}, #{phone1}, #{phone2}, #{phone3}, #{memo})
+		insert into order_info (member_no, address_no, recipient, postcode, address, detail_address, phone1, phone2, phone3, memo, total_price)
+		values (#{member_no}, #{address_no}, #{recipient}, #{postcode}, #{address}, #{detail_address}, #{phone1}, #{phone2}, #{phone3}, #{memo}, #{total_price})
 		<selectKey resultType="int" keyProperty="order_no" order="AFTER">
 			select last_insert_id()
 		</selectKey>
@@ -30,6 +30,7 @@
 		<result property="memo" column="memo"	/>
 		<result property="order_time" column="order_time"	/>
 		<result property="order_status" column="order_status" />
+		<result property="total_price" column="total_price" />
 	</resultMap>
 	
 	<select id="selectOrderInfo" resultMap="orderInfoMap">
@@ -67,18 +68,24 @@
 		<result property="memo" column="memo" />
 		<result property="order_time" column="order_time" />
 		<result property="shipping" column="shipping"/>
+		<result property="total_price" column="total_price" />
 	</resultMap>
 	
 	<select id="selectSellerOrderInfo" resultMap="sellerOrderInfoMap">
 		select order_no, recipient, postcode, address, detail_address, 
-		phone1, phone2, phone3, memo, order_time, shipping
+		phone1, phone2, phone3, memo, order_time, shipping, total_price
 		from order_info as info join address as ad 
 		on info.address_no=ad.address_no 
 		where ad.member_no=#{member_no} and info.order_status=#{order_status}
 	</select>
-	
+
 	<update id="updateOrderStatus">
 		update order_info set order_status=#{order_status}
 		where order_no=#{order_no}
 	</update>
+	
+	<delete id="deleteOrder">
+		delete from order_goods where goods_name = #{goods_name}
+	</delete>
+	
 </mapper>

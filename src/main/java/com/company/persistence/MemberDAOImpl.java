@@ -1,7 +1,5 @@
 package com.company.persistence;
 
-import java.util.Map;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,17 +17,10 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	private static final String namespace = "mappers.memberMapper";
 	
-/*	@Override
-	public MemberVO login(Map loginMap) throws DataAccessException {
-		MemberVO memberVO = (MemberVO)sqlSession.selectOne(namespace + ".login", loginMap);
-	    return memberVO;
-	}*/
-	
 	@Override
 	public void insertNewMember(MemberVO memberVO) {
 		sqlSession.insert(namespace+".insertNewMember", memberVO);
 	}
-
 
 	@Override
 	public String selectOverlappedID(String id) throws DataAccessException {
@@ -37,16 +28,24 @@ public class MemberDAOImpl implements MemberDAO {
 	    return result;
 	}
 
-
 	@Override
 	public MemberVO login(LoginDTO loginDTO) throws Exception {
 		return sqlSession.selectOne(namespace + ".login", loginDTO);
 	}
 
-
 	@Override
 	public void updateInfo(OrderInfoVO orderInfoVO) throws Exception {
 		sqlSession.update(namespace+".updateInfo", orderInfoVO);
+	}
+	
+	@Override
+	public void updateInfo(MemberVO memberVO) throws Exception {
+		sqlSession.update(namespace+".updateInfo", memberVO);
+	}
+
+	@Override
+	public MemberVO selectMemberInfo(int member_no) throws Exception {
+		return sqlSession.selectOne(namespace+".selectMemberInfo", member_no);
 	}
 
 }

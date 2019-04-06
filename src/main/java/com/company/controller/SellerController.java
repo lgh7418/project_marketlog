@@ -1,4 +1,4 @@
-package com.company.myWeb;
+package com.company.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +44,7 @@ public class SellerController {
 		goods_address = CommonUtils.changeAddress(goods_address);
 		Integer address_no = addressDAO.getAddressNo(goods_address);
 		if(address_no != null) {
-			String msg = "존재하는 페이지입니다.";
+			String msg = "이미 존재하는 페이지입니다.";
 			model.addAttribute("msg", msg);
 		}
 		model.addAttribute("address", goods_address);
@@ -52,13 +52,14 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value="/seller_result", method=RequestMethod.POST)
-	public void getProductInputs(GoodsDTO goodsDTO, AddressVO addressVO) throws Exception {
+	public void getProductInputs(GoodsDTO goodsDTO, AddressVO addressVO
+			, Model model) throws Exception {
 		// 주소 추가	
 		addressDAO.insertAddress(addressVO);
 		
 		// 상품 추가
-		goodsService.addGoods(goodsDTO, addressVO);
-		
+		int address_no = goodsService.addGoods(goodsDTO, addressVO);
+		model.addAttribute("address_no", address_no);
 	}
 	
 }

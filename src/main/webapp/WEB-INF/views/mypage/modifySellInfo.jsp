@@ -5,11 +5,12 @@
 <script>
 $(document).ready(function() {
 	$("#add-row").click(function() {
-		$("#product_table > tbody:first").append('<tr><td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>'
+		$("#product_table > tbody:first").append('<tr><td><button type="button" class="delete-row text-warning" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>'
 		+ '<td><input type="text" class="form-control gname" name="goods_name"></td>'
 		+ '<td><input type="text" class="form-control gprice" name="goods_price"></td></tr>');
+		var gname = $('#add-row').parents('tfoot').prev().find('tr:last-child').find('.gname');
+		$(gname).focus();
 	});
-
 });
 </script>
 
@@ -19,7 +20,7 @@ $(document).ready(function() {
           <iframe src="${address.goods_address }" frameborder="0"></iframe>
         </article>
         <aside>
-          <form id="goods_form" action="${contextPath }/seller/seller_result" method="post">
+          <form id="goods_form" action="${contextPath }/mypage/modifySellInfo.do" method="post">
           <div class="product">
           <p>상품명과 가격을 입력하세요</p>
           <table class="table table-bordered" id="product_table">
@@ -33,26 +34,34 @@ $(document).ready(function() {
             <tbody>
             	<c:forEach var="item" items="${goodsList}">
                 <tr>
-                  <td><button type="button" class="delete-row" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>
+                  <td><button type="button" class="delete-row text-warning" onclick="deleteRow(this)"><i class="fas fa-minus-circle"></i></button></td>
                   <td><input type="text" class="form-control gname" name="goods_name" value="${item.goods_name}"></td>
                   <td><input type="text" class="form-control gprice" name="goods_price" value="${item.goods_price}"></td>
                 </tr>
                 </c:forEach>
              </tbody>
+              <tfoot>
+        	    <tr>
+                  <td><button type="button" id="add-row" class="delete-row text-primary"><i class="fas fa-plus-circle"></i></button></td>
+                  <td colspan="2"></td>
+                </tr>
+             </tfoot>
           </table>
-          <button id="add-row" type="button"><i class="fas fa-plus"></i></button>
           </div>
           <div class="charge">
-          <p>배송비를 입력하세요</p>
-          <div class="input-group mb-3">
-            <input type="text" value="${address.shipping }" name="shipping" id="shipping" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">원</span>
-            </div>
-          </div>
-          <input type="hidden" name="goods_address" value="${address.goods_address }">
-          <input type="hidden" name="member_no" value="${address.member_no }">
-          <button type="button" class="btn btn-primary" onclick="checkName()">수정하기</button>
+             <div class="charge-box1">
+	          <p>배송비를 입력하세요</p>
+	          <div class="input-group mb-3">
+	            <input type="text" value="${address.shipping }" name="shipping" id="shipping" class="form-control rounded-0" aria-label="Recipient's username" aria-describedby="basic-addon2">
+	            <div class="input-group-append">
+	              <span class="input-group-text" id="basic-addon2">원</span>
+	            </div>
+         	 </div>
+         	</div>
+         	<div class="charge-box2">
+	          <input type="hidden" name="address_no" value="${address.address_no }">
+	          <button type="button" class="btn btn-info" onclick="checkName()">수정하기</button>
+	       </div>
           </div>
           </form>
         </aside>

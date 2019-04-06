@@ -2,15 +2,16 @@
     pageEncoding="UTF-8"%>
 
     <p class="font-navy"><b>새로 들어온 주문</b></p>
-<div class="accordion" id="accordion">
+
 <c:choose>
 	<c:when test="${empty sellerOrderInfoList}">
 	새로 들어온 주문이 없습니다.
 	</c:when>
 	<c:otherwise>
-		<input type="checkbox" id="collapse">펼쳐보기
+		<div class="open"><input type="checkbox" id="collapse">펼쳐보기</div>
 	</c:otherwise>
 </c:choose>
+<div class="accordion" id="accordion">
 <c:forEach var="item" items="${sellerOrderInfoList }">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -20,13 +21,13 @@
         </button>
      </div>
      <div class="float-right pt-1">
-      <span><fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/></span>
+      <span><fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/></span>&nbsp;
       <a href="${contextPath }/mypage/sell/${item.order_no}/1" class="finished btn btn-danger btn-sm">완료</a>
      </div>
     </div>
     <div id="collapse${item.order_no }" class="collapse new" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-      	<table class="table table-sm">
+      	<table class="table table-sm sell-goods">
 	      <thead>
 	        <tr class="th">
 	          <th>상품명</th>
@@ -45,8 +46,15 @@
 	        </tr>
 	        </c:forEach>
 	      </tbody>
+          <tfoot>
+    		<tr>
+	      		<td><b>합계 (상품 가격 + 배송비)</b></td>
+	      		<td>${item.total_price }</td>
+	      		<td colspan="2"></td>
+	    	</tr>
+      	  </tfoot>
 	    </table>
-      	<table class="table table-sm shipping-table">
+      	<table class="table table-sm shipping-table w-100">
 	      <thead>
 	        <tr class="th">
 	          <th colspan="2">배송 정보</th>
@@ -79,10 +87,12 @@
     </div>
   </div>
 </c:forEach>
+</div>
 <p class="font-navy"><b>완료된 주문</b></p>
 <c:if test="${empty finishedOrderList}">
 	완료된 주문이 없습니다.
 </c:if>
+<div class="accordion" id="accordion">
 <c:forEach var="item" items="${finishedOrderList }">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -92,7 +102,7 @@
         </button>
  	</div>
     <div class="float-right pt-1">
-      <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>
+      <fmt:formatDate value="${item.order_time }" pattern="MM월 dd일 HH:mm"/>&nbsp;
       <a href="${contextPath }/mypage/sell/${item.order_no}/0" class="finished btn btn-outline-danger btn-sm">취소</a>
     </div>
     </div>
