@@ -7,7 +7,7 @@
 	</c:if>
     <c:forEach var="item" items="${orderInfoList }">
     <p><fmt:formatDate value="${item.order_time }" pattern="yyyy.MM.dd"/></p>
-    <form id="delete-form" action="${contextPath }/mypage/deleteOrder" method="post">
+    <form action="${contextPath }/mypage/deleteOrderGoods" method="post">
     <table class="table table-sm buy-goods">
       <thead>
         <tr class="th">
@@ -91,13 +91,16 @@
       </tbody>
     </table>
 
-	    <input type="hidden" name="order_no" value="${item.order_no }">
 	    <div>
+	   		<input type="hidden" id="order_no" name="order_no" value="${item.order_no }">
 	    	<button type="button" onclick="deleteGoods(this)" class="btn btn-danger">선택 상품 취소</button>
-	    	<button type="button" onclick="deleteGoods(this)" class="btn btn-danger">주문 전체 취소</button>
+	    	<button type="button" onclick="deleteAll(this)" class="btn btn-danger">주문 전체 취소</button>
 	    	<input type="submit" class="btn btn-info" value="배송 정보 수정">
 	    </div>
 	    <hr>
+    </form>
+    <form action="${contextPath }/mypage/deleteOrderInfo" method="post">
+	    <input type="hidden" name="order_no" value="${item.order_no }">
     </form>
     </c:forEach>
 <script>
@@ -119,9 +122,21 @@ function deleteGoods(obj) {
 			alert('발송이 완료된 상품은 취소할 수 없습니다.');
 			return;
 		}else {
-			$('#delete-form').submit();
+			$(area).submit();
 		}		
 	}
-	
+}
+
+function deleteAll(obj) {
+	var area = $(obj).parents("form").prev();
+	var status = $(area).find(".status").val();
+	var order_no = $(obj).prev().prev().val();
+	var form = $(obj).parents("form").next();
+	if(status == "1") {
+		alert('발송이 완료된 상품은 취소할 수 없습니다.');
+		return;
+	}else {
+		$(form).submit();
+	}
 }
 </script>

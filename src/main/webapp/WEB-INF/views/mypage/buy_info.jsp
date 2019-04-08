@@ -96,6 +96,7 @@
       }
     }).open();
   }
+  
   if(${member.address} != null) {
   	$("option:contains('${member.phone1 }')").prop('selected', 'selected');
   }else {

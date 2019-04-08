@@ -7,21 +7,21 @@
           <table>
             <tr>
               <th>받으시는분</th>
-              <td><input type="text" name="recipient" class="form-control" placeholder="성함"></td>
+              <td><input type="text" name="recipient" value="${member.member_name }" class="form-control" placeholder="성함"></td>
             </tr>
             <tr>
               <th>주소</th>
               <td>
                 <div class="form-inline">
                   <div class="form-group mb-2">
-                    <input type="text" id="postcode" name="postcode" class="form-control" placeholder="우편번호">
+                    <input type="text" value="${member.postcode }" id="postcode" name="postcode" class="form-control" placeholder="우편번호">
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
                     <input type="button" onclick="execDaumPostcode()" value="주소 찾기">
                   </div>
                 </div>
-                <input type="text" id="address" name="address" class="form-control" placeholder="주소">
-                <input type="text" id="detailAddress" name="detail_address" class="form-control" placeholder="상세주소">
+                <input type="text" value="${member.address }" id="address" name="address" class="form-control" placeholder="주소">
+                <input type="text" value="${member.detail_address }" id="detailAddress" name="detail_address" class="form-control" placeholder="상세주소">
               </td>
             </tr>
             <tr>
@@ -35,8 +35,8 @@
                   <option value="018">018</option>
                   <option value="019">019</option>
                 </select>
-                - <input type="tel" name="phone2" maxlength="4"> -
-                <input type="tel" name="phone3" maxlength="4">
+                - <input type="tel" id="phone2" name="phone2" value="${member.phone2 }" maxlength="4"> -
+                <input type="tel" id="phone3" name="phone3" value="${member.phone3 }" maxlength="4">
               </td>
             </tr>
             <tr>
@@ -108,7 +108,17 @@
         	}else {
         		$("#shippingCk").removeAttr("name");
         	}
-        })
+        });
+        
+        if(${member.address} != null) {
+          	$("option:contains('${member.phone1 }')").prop('selected', 'selected');
+          }else {
+        	  $('#postcode').val("");
+        	  $('#address').val("");
+        	  $('#detailAddress').val("");
+        	  $('#phone2').val("");
+        	  $('#phone3').val("");
+          }
       </script>
     </body>
   </html>

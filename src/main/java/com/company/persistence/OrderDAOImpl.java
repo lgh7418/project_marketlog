@@ -58,4 +58,9 @@ public class OrderDAOImpl implements OrderDAO {
 		sqlSession.delete(namespace+".deleteOrder", goods_name);
 	}
 
+	@Override
+	public void deleteOrderInfo(int order_no) throws Exception {
+		sqlSession.delete(namespace+".deleteOrderInfo", order_no);
+	}
+
 }

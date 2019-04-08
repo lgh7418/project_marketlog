@@ -14,4 +14,5 @@ public interface OrderService {
 	public List<OrderInfoVO> getSellerOrderInfo(int member_no, int order_status) throws Exception;
 	public void updateOrderStatus(int order_no, int order_status) throws Exception;
 	public void deleteOrder(OrderGoodsVO goods_name) throws Exception;
+	public void deleteOrderInfo(int order_no) throws Exception;
 }

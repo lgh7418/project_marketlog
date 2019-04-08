@@ -103,12 +103,22 @@ public class MypageController {
 		return "redirect:/mypage/mypage/3";
 	}
 	
-	@RequestMapping(value="/deleteOrder", method=RequestMethod.POST)
-	public void deleteGoods(OrderGoodsVO goods_name, HttpServletResponse res) throws Exception {
+	@RequestMapping(value="/deleteOrderGoods", method=RequestMethod.POST)
+	public void deleteOrderGoods(OrderGoodsVO goods_name, HttpServletResponse res) throws Exception {
 		orderService.deleteOrder(goods_name);
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
-		out.println("<script>alert('삭제되었습니다.'); location.href='/mypage/mypage/1';</script>");
+		out.println("<script>alert('선택 상품이 취소되었습니다.'); location.href='/mypage/mypage/1';</script>");
+		out.flush();
+	}
+	
+	@RequestMapping(value="/deleteOrderInfo", method=RequestMethod.POST)
+	public void deleteOrderInfo(int order_no, HttpServletResponse res) throws Exception {
+		System.out.println(order_no);
+		orderService.deleteOrderInfo(order_no);
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		out.println("<script>alert('주문이 취소 되었습니다.'); location.href='/mypage/mypage/1';</script>");
 		out.flush();
 	}
 	

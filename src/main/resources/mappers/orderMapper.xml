@@ -88,4 +88,8 @@
 		delete from order_goods where goods_name = #{goods_name}
 	</delete>
 	
+	<delete id="deleteOrderInfo">
+		delete from order_info where order_no = #{order_no}
+	</delete>
+	
 </mapper>

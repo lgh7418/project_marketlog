@@ -1,27 +1,23 @@
 package com.company.controller;
 
-import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.company.common.CommonUtils;
 import com.company.domain.AddressVO;
 import com.company.domain.GoodsVO;
+import com.company.domain.MemberVO;
 import com.company.domain.OrderGoodsVO;
 import com.company.domain.OrderInfoVO;
 import com.company.persistence.AddressDAO;
@@ -85,9 +81,14 @@ public class BuyerController {
 	
 	
 	@RequestMapping(value="/buyer_shipping", method=RequestMethod.POST)
-	public void addOderGoods(OrderGoodsVO vo, int total_price, Model model) throws Exception {
+	public void addOderGoods(OrderGoodsVO vo, int total_price, 
+			HttpSession session, Model model) throws Exception {
 		orderGoodsVO = vo;
+		int member_no = (int) session.getAttribute("member_no");
+		MemberVO memberVO = memberService.selectMemberInfo(member_no);
+		model.addAttribute("member", memberVO);
 		model.addAttribute("total_price", total_price);
+		
 	}
 	
 	@RequestMapping(value="/buyer_result", method=RequestMethod.POST)

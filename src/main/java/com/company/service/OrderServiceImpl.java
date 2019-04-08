@@ -89,4 +89,9 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 
+	@Override
+	public void deleteOrderInfo(int order_no) throws Exception {
+		orderDAO.deleteOrderInfo(order_no);
+	}
+
 }

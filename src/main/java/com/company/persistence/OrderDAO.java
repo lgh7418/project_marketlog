@@ -1,6 +1,5 @@
 package com.company.persistence;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,4 +15,5 @@ public interface OrderDAO {
 	public List<OrderInfoVO> selectSellerOrderInfo(Map<String, Integer> selector) throws Exception;
 	public void updateOrderStatus(Map<String, Integer> selector)throws Exception;
 	public void deleteOrder(String goods_name) throws Exception;
+	public void deleteOrderInfo(int order_no) throws Exception;
 }
