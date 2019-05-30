@@ -12,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MarketLog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="${contextPath}/resources/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Handlee|Noto+Sans+KR:100,400|Nanum+Gothic&amp;subset=korean" rel="stylesheet">
@@ -36,7 +35,7 @@
 </head>
 <body>
   <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    	<a class="navbar-brand" href="${contextPath}/main/home" ><img src="${contextPath }/resources/images/logo.png" alt="logo" width="230px"></a>
+    	<a class="navbar-brand" href="${contextPath}/" ><img src="${contextPath }/resources/images/logo.png" alt="logo" width="230px"></a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
@@ -52,9 +51,9 @@
 						<li class="nav-item"><a class="nav-link" href="${contextPath}/mypage/mypage/1">마이페이지</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/buyer/input">구매하기</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="${contextPath}/seller/input">판매하기</a>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/buyer/input">구매하기</a></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/seller/input">판매하기</a></li>
+				<li class="nav-item"><a class="nav-link" href="${contextPath}/seller/input">QnA</a></li>
 			</ul>
 		</div>	
   </header>

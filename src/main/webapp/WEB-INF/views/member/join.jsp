@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../partials/header.jsp" %>
 
-<!-- <script>
-function validate() {
-	var id = document.getElementByID("inputEmail");
-	var pw = document.getElementByID("inputPassword");
-	var pwck = document.getElementByID("inputPasswordCheck");
-
-     if(pw != pwck) {
-    	 alert("비밀번호가 다릅니다.");
-     }
-}
-</script> -->
-
 <c:if test="${not empty msg }">
 	<script>
 		alert('${msg}');
@@ -32,10 +20,23 @@ function validate() {
             <tr><td><label for="inputPasswordCheck">비밀번호 확인</label></td></tr>
             <tr><td><input type="password" name="member_pwck" class="form-control" id="inputPasswordCheck" placeholder="confirm password"></td></tr>
             <tr></tr>
-            <tr><td><button type="submit" class="btn btn-primary">회원가입</button></td></tr>
+            <tr><td><button type="button" class="btn btn-primary" onclick="validate()">회원가입</button></td></tr>
         </table>
     </form>
   </div>
   </div>
 </body>
+<script>
+function validate() {
+	var id = document.getElementById("inputEmail");
+	var pw = document.getElementById("inputPassword");
+	var pwck = document.getElementById("inputPasswordCheck");
+
+     if(pw.value != pwck.value) {
+    	 alert("비밀번호가 다릅니다.");
+     }else {
+    	 $('#join-form').submit();
+     }
+}
+</script>
 </html>

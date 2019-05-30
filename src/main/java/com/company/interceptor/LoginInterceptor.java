@@ -25,21 +25,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		}
 		return true;
 	}
-	// preHandle: 해당 URL에 접근하기 전에 이루어짐
-	// postHandle: 해당 URL에 접근 컨트롤러가 실행된 후에 이루어짐
+
 	@Override
 	public void postHandle(HttpServletRequest req, HttpServletResponse res, Object Handler, ModelAndView mav) throws Exception {
 		HttpSession session = req.getSession();
 		ModelMap modelMap = mav.getModelMap();
 		String contextPath = req.getContextPath();
-		// 만약 모델맵에 memberVO가 들어가 있다면 로그인이 성공했다는 뜻
 		MemberVO memberVO = (MemberVO) modelMap.get("memberVO");
 		if(memberVO != null) {
 			logger.info("로그인 성공");
-			session.setAttribute("member_no", memberVO.getMember_no());	// 멤버 객체를 세션에 넣어줌
-			res.sendRedirect(contextPath + "/main/home"); // 루트 폴더로 돌려보냄.
+			session.setAttribute("member_no", memberVO.getMember_no());
+			res.sendRedirect(contextPath + "/");
 		}else {
-			// 로그인 실패 시 다시 로그인 창으로 리다이렉트
 			logger.info("로그인 실패");
 			modelMap.addAttribute("msg", "아이디나 비밀번호가 올바르지 않습니다.");
 		}

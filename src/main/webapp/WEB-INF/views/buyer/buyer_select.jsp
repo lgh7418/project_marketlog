@@ -8,9 +8,6 @@
 		</article>
 		<aside>
 			<div class="buy-input">
-			<!-- 상품명, 수량, 전하실 말씀(요구사항), 장바구니에 담기 -->
-			<!-- <input type="text" class="form-control form-control-sm rounded-0" placeholder="상품명"
-				required>  -->
 				<div class="dropdown">
 					<a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						옵션 선택
@@ -25,8 +22,6 @@
 						</c:forEach>
 					</div>
 				</div>
-				<!-- 전하실 말씀은 텍스트 버튼으로 만들어서 버튼 클릭하면 추가할 수 있도록 -->
-				<!-- <input type="hidden" class="form-control form-control-sm" placeholder="요청 사항"> -->
 				<div class="buy-form">
 					<form id="buy_form" action="${contextPath }/buyer/buyer_shipping" method="post">
 					<table id="table">

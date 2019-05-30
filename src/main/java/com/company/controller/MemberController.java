@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session, RedirectAttributes rttr) throws Exception {
-		session.invalidate();	// 세션 파괴
+		session.invalidate();
 		return "redirect:/main/home";
 	}
 
@@ -61,7 +61,7 @@ public class MemberController {
 			model.addAttribute("state", "join");
 		}else {
 			memberService.addMember(memberVO);
-			response.sendRedirect(request.getContextPath() + "/main/home");
+			response.sendRedirect(request.getContextPath() + "/");
 		}
 	}
 	

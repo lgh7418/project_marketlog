@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="shipping-form info">
  <p class="font-navy"><b>내 정보</b></p>
@@ -97,7 +98,7 @@
     }).open();
   }
   
-  if(${member.address} != null) {
+  if('${member.address}' != null) {
   	$("option:contains('${member.phone1 }')").prop('selected', 'selected');
   }else {
 	  $('#postcode').val("");
